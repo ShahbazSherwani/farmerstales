@@ -1,0 +1,2060 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Kaushan+Script&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=REM:wght@600&family=Roboto+Serif:opsz,wght@8..144,300&display=swap'); /*------------------------------------------------------*/
+/*Set up custom colour and text style properties--------*/
+/*------------------------------------------------------*/
+
+/*Colors and font styles used throughout all five pages*/
+:root {
+  --background-light: #bdc0c9;
+  --background-medium: #7b76ad;
+  --background-dark: #000000;
+  --dark-blue: rgb(48, 61, 90);
+  --section-background: rgb(248, 249, 255);
+  --main-background: rgb(247, 250, 253);
+  --dark-black: rgb(35, 37, 54);
+  --light-grey: rgb(214, 214, 214);
+  --almost-white: rgb(248, 250, 255);
+  --white: rgb(255, 255, 255);
+  --google-orange: #f1503b;
+  --header-yellow: rgb(255, 208, 80);
+  /*Font used for company logo, page headers, and section headers with sans-serif fallback fonts*/
+  --main-header: 'REM', 'Verdana', sans-serif;
+
+  /*Font used for news article content with serif fallback fonts*/
+  --main-text: 'Roboto Serif', 'Georgia', serif;
+}
+
+/*---------------------------------------------------------------------------------------------*/
+/*Set up color scheme for accessibility features: low contrast mode and grayscale mode---------*/
+/*---------------------------------------------------------------------------------------------*/
+
+/*Grayscale mode in which color palette is composed of shades of grey
+    This mode can be toggled from the accessibility dropdown menu in the top-left corner*/
+.grayscale {
+  --background-light: #dfdfdf;
+  --background-medium: #969696;
+  --background-dark: #474747;
+  --dark-blue: rgb(61, 61, 61);
+  --section-background: rgb(231, 231, 231);
+  --main-background: rgb(247, 247, 247);
+  --dark-black: rgb(48, 48, 48);
+  --light-grey: rgb(189, 189, 189);
+  --almost-white: rgb(241, 241, 241);
+  --white: rgb(255, 255, 255);
+  --google-orange: #c2c2c2;
+}
+
+body.dark-theme {
+  --background-light: #bdc0c9;
+  --background-medium: #7b76ad;
+  --background-dark: #000000;
+  --dark-blue: rgb(48, 61, 90);
+  --section-background: rgb(248, 249, 255);
+  --dark-black: #000000;
+  --light-grey: rgb(214, 214, 214);
+  --almost-white: #bdc0c9;
+  --white: rgb(255, 255, 255);
+  --google-orange: rgb(145, 122, 89);
+  --header-yellow: rgb(255, 208, 80);
+  --main-background: rgb(96, 90, 105);
+  transition: 0.5s;
+}
+
+/*Apply a grayscale filter on all images when grayscale mode is toggled from the accessibility dropdown menu*/
+.gray {
+  filter: grayscale(1);
+}
+
+/*Improved legibility mode toggled by the first accessibility-options item of the accessible icon dropdown menu*/
+.readability-mode {
+  /*All fonts changed to a legible font
+    Fallback font ensures that the font will render*/
+  --main-header: 'Arial', sans-serif;
+  --fancy-header: 'Arial', sans-serif;
+  --main-text: 'Arial', sans-serif;
+}
+
+/*-------------------------------------------------------------------------------*/
+/*Style images to have an acceesible 'Zoom in' effect when hovered---------------*/
+/*-------------------------------------------------------------------------------*/
+
+/*Smooth the zoom in effect animation*/
+img {
+  transition: all 0.2s ease-out;
+}
+
+/*Emphasize the given image by scaling up the image to mirror a "zoom in" effect*/
+img:hover {
+  transform: scale(1.05);
+}
+
+/*---------------------------------------------------------------*/
+/*Common CSS that applies to all pages---------------------------*/
+/*---------------------------------------------------------------*/
+
+/*Ensure that content, padding, and border fits within a given width or height*/
+* {
+  /*Aids in managing the size of all HTML elements*/
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*Set uniform background color for each page*/
+body {
+  background-color: var(--main-background);
+  padding-top: 70px;
+  transition: 0.5s;
+}
+
+/*Style common headers to create a uniform font style*/
+h1,
+h2,
+h3 {
+  font-family: var(--main-header);
+}
+
+/*When an accessibility feature is selected from the dropdown menu, a selected indicator will appear*/
+.changeOpacity {
+  /*Background of the menu item darkens when selected*/
+  /*When the feature is deselected, its color and opacity will return to normal*/
+  background: var(--dropdown-selected);
+}
+
+/*--------------------------------------------------------------*/
+/*Adjust the different headers to improve readability-----------*/
+/*--------------------------------------------------------------*/
+
+/*Uniform spacing for main headers and subheaders*/
+h1,
+h2,
+h3,
+h4 {
+  /*This spacing is important on mobile devices when text may wrap to multiple lines*/
+  line-height: 1.8em;
+}
+
+/*Lighter weight for paragraph text to emphasize the headers*/
+p {
+  font-weight: 200;
+  line-height: 2em;
+  font-family: var(--main-text);
+  color: var(--dark-black);
+}
+
+@media screen and (max-width: 1010px) {
+  body {
+    padding-top: 85px;
+  }
+}
+
+/*---------------------------------------------------------------*/
+/*Main navigation menu-bar with five navigational links---------------*/
+/*---------------------------------------------------------------*/
+
+.main-navigation {
+  display: flex; /* Add flexbox layout */
+  align-items: center; /* Vertically align items in the center */
+  justify-content: space-between; /* Add space between items */
+  padding: 1.3em 1.5em;
+  width: 100%;
+  background-color: var(--header-yellow);
+  color: var(--almost-white);
+  position: fixed;
+  top: 0;
+  transition: 0.5s;
+  z-index: 99;
+}
+
+.company-logo {
+  font-size: 2em;
+  font-weight: 900;
+  line-height: 1.4;
+  padding: 0.5em 0.5em;
+  color: var(--dark-black);
+  transition: 0.8s;
+  white-space: nowrap;
+  flex-grow: 1;
+}
+
+/*Provide a uniform and readable font for the main navigation links*/
+.main-navigation,
+button {
+  font-family: var(--main-header);
+}
+
+/*Equally space the navigation links to create a cohesive appearance*/
+.nav-links ul {
+  display: flex;
+  /*Prevent collision with 'Toggle Contrast' button by restricting horizontal space occupied by the links*/
+  width: 100%;
+  justify-content: space-between;
+  margin: auto;
+  padding: 0px 70px 0px 0px;
+}
+
+/*Make navigation interface cleaner by removing decorative elements*/
+.nav-links li {
+  list-style: none;
+}
+
+/*Uniformly space out the navigation links*/
+.nav-links li a {
+  top: 0.4rem;
+  display: block;
+  font-size: 0.93em;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--dark-black);
+  padding: 1rem;
+  position: relative;
+  margin: 0.3em;
+  /*Smooth the transition from normal navigation menu-bar state to fixed navigation menu-bar state*/
+  transition: 0.2s;
+}
+
+/*Selected indicator (blue line) appears when a user hovers over a navigation link*/
+/*Indicate an interactive element by adding a subtle text color change when a navigation link is hovered*/
+.nav-links li a:hover {
+  color: var(--linkedin-blue);
+  transform: scale(1.2);
+}
+
+/*---------------------------------------------------------------------------------------*/
+/*Sticky navigation menu-bar for accessible navigation when page is vertically scrolled-------*/
+/*---------------------------------------------------------------------------------------*/
+
+/*Compact navigation menu-bar to not obstruct main viewport*/
+.main-navigation.sticky {
+  padding: 0.5em 1.5em;
+  background-color: var(--dark-black);
+}
+
+/*Brighten main title to contrast dark background and increase visibility*/
+.main-navigation.sticky .company-logo {
+  color: var(--almost-white);
+  padding: 0.6em 0.6em;
+}
+
+/*Brighten navigation link color to constrast dark background and increase visibility*/
+.main-navigation.sticky ul li a {
+  color: var(--almost-white);
+  padding-bottom: 1.5em;
+}
+
+/*Reposition 'Toggle Constrast' button to be centered once the dimensions of the navigation menu-bar changes from
+a standard state to a fixed state*/
+.sticky-adjust {
+  margin-bottom: -0.65em;
+}
+
+/*Company logo (composed of two chess pieces) in a white box that becomes visible when the navigation menu-bar
+enters a fixed state*/
+.company-logo-scroll {
+  /*Invisible by default, since the logo is only visible against the dark background of the fixed navigation
+    menu*/
+  display: none;
+  position: absolute;
+  top: 0.4em;
+  left: 0.4em;
+  font-size: 2em;
+  border: 3px solid var(--almost-white);
+  padding: 0.2em;
+}
+
+/*Make the company logo visible when the fixed Navigation Menu is triggered by the user scrolling past a
+vertical scroll menu-bar threshold*/
+/* .company-logo-scroll-active {
+  display: inline;
+} */
+
+@media screen and (max-width: 1010px) {
+  /*Prevent the company logo from being displayed twice on mobile and tablet devices*/
+  .company-logo-scroll-active {
+    display: none;
+  }
+}
+
+/*---------------------------------------------------------------------------*/
+/*Smooth scrolling back to top button that reduces vertical scrolling -------*/
+/*---------------------------------------------------------------------------*/
+
+/*Position the back to top button as to not obstruct visibility of main content within the viewport*/
+.scroll-to-top-button {
+  /*Button is fixed to the bottom-right corner of the viewport*/
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  /*Visible over all other elements*/
+  z-index: 99;
+  font-size: 1.2em;
+  color: var(--white);
+  background-color: var(--dark-black);
+  border: 0.11em solid var(--light-grey);
+  /*Button is not visible on page load
+    Button becomes visible once the page has reached a vertical scroll threshold*/
+  display: none;
+}
+
+/*Indicate the button as an interactive element by providing a hover effect*/
+.scroll-to-top-button:hover {
+  background-color: var(--header-yellow);
+  border: 0.11em solid var(--light-grey);
+  color: var(--dark-black);
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+/*'Toggle Contrast' button that is high contrast by default. Can be toggled to low contrast and vice versa.---*/
+/*------------------------------------------------------------------------------------------------------------*/
+
+/*Establish button style that is used throughout each web page*/
+button {
+  color: var(--almost-white);
+  padding: 1.3em 1.3em;
+  border-radius: 0.2em;
+  background-color: var(--dark-black);
+  border: 0;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/*Vertically align the 'Toggle Contrast' button with the navigation links*/
+
+/*Indicate the 'Toggle Contrast' button as an interactive element by adding a selected indicator when hovered*/
+button:hover {
+  background-color: var(--dark-blue);
+  transition: ease-in-out 0.1s;
+}
+
+.anchor-button {
+  color: var(--almost-white);
+  padding: 1.5em 1.5em;
+  border-radius: 0.2em;
+  background-color: var(--dark-black);
+  border: 0;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--main-header);
+  font-size: 0.8em;
+}
+
+.anchor-button:hover {
+  background-color: var(--header-yellow);
+  transition: ease-in-out 0.1s;
+  color: var(--dark-black);
+}
+/*--------------------------------------------------------------------------------------------------------------*/
+/*Fixed accessibility menu (wheelchair icon): offers font readability, link underlining, and grayscale mode-----*/
+/*--------------------------------------------------------------------------------------------------------------*/
+
+/*Prevent accessibility menu from obstructing main viewport content by fixing it to the left side of the screen*/
+.accessibility-dropdown-content {
+  position: absolute;
+  /*Align with the bottom of the sticky navigation menu-bar for fluidity*/
+  top: 30%;
+  right: 2%;
+  /*Make menu visible and accessible at all times*/
+  z-index: 99;
+  /*Transparent background would result in collisions with elements (lower z-index) that are beneath the menu*/
+  background: var(--dark-black);
+}
+
+/*Indicate the wheelchair icon as interactive by adding an indicator when accessibility button is hovered*/
+.accessibility-dropdown-content
+  .dropdown-content
+  .accessibility-toggle-bar:hover {
+  background-color: var(--dark-blue);
+}
+
+/*Make accessibility menu uniform by applying the same background color indicator to dropdown menu items as the
+main wheelchair button*/
+.accessibility-dropdown-content
+  .dropdown-content
+  .accessibility-options
+  a:hover {
+  background: var(--dark-blue);
+}
+
+/*Provide positional frame of reference for the tooltip display*/
+.accessibility-menu-bar {
+  position: relative;
+}
+
+/*Create a high contrast, legible tooltip without the left pointing arrow*/
+.accessibility-menu-bar::before {
+  position: absolute;
+  display: none;
+  border-radius: 0.16em;
+  /*Accessibility tooltip display information is based on the content within the title attribute*/
+  content: attr(title);
+  color: var(--white);
+  padding: 1em;
+  /*Ensure that the tooltip is displayed on one line so each tooltip has the same vertical height*/
+  width: 9em;
+  background-color: var(--google-orange);
+  /*Ensure that the tooltip is not obscured by other elements*/
+  z-index: 99;
+  font-size: 0.81em;
+}
+
+/*Small arrow on the left side of the accessibility tooltip that points towards the accessibility icon it describes*/
+.accessibility-menu-bar::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: none;
+  color: var(--dark-blue);
+  /*Ensure that the arrow visibility is not obscured*/
+  z-index: 99;
+  border: 0.41em solid transparent;
+}
+
+/*Make the tooltip visible*/
+.accessibility-menu-bar:hover::before,
+.accessibility-menu-bar:hover::after {
+  display: block;
+}
+
+/*Position the tooltip to the right side of the accessibility icon it corresponds to*/
+.accessibility-menu-bar.tooltip-right:before {
+  transform: translateY(-50%);
+  top: 115%;
+  left: calc(-265%);
+}
+
+/*Position the left pointing arrow adjacent to and to the left of the main tooltip body*/
+.accessibility-menu-bar.tooltip-right:after {
+  transform: translateY(-50%);
+  top: 70%;
+  left: -15%;
+  rotate: 180deg;
+  border-left-width: 0;
+  border-right-color: var(--google-orange);
+}
+
+/*Increase visibility of the dropdown menu icons by contrasting them with the dark background*/
+.accessibility-dropdown-content i {
+  color: var(--almost-white);
+}
+
+/*Remove bullet points on menu items for a cleaner interface*/
+.accessibility-dropdown-content .dropdown-content {
+  list-style: none;
+}
+
+/*Dropdown menu appears when icon is clicked by the user*/
+.accessibility-dropdown-content .dropdown-content {
+  cursor: pointer;
+  /*Dropdown menu items positioned in relation to the menu*/
+  position: relative;
+}
+
+/*Create distinguishable space for each icon item in the dropdown menu*/
+.accessibility-dropdown-content .dropdown-content a {
+  display: block;
+  text-decoration: none;
+}
+
+/*Make dropdown menu icons appear slightly smaller than the main wheelchair icon*/
+.accessibility-dropdown-content .dropdown-content .accessibility-options a i {
+  font-size: 1em;
+  padding: 1em 0 1em 0.85em;
+}
+
+/*Re-centre the 'Underline Link' icon since it is positioned further to the right by default and misaligned*/
+.accessibility-dropdown-content
+  .dropdown-content
+  .accessibility-options
+  div:nth-child(2) {
+  /*Align the 'Underline Link' icon with the other icons*/
+  margin-left: -0.2em;
+}
+
+/*Provide space around wheelchair icon to reduce clutter*/
+.accessibility-dropdown-content .dropdown-content .accessibility-toggle-bar i {
+  font-size: 1.6em;
+  padding: 0.4em 0.2em;
+}
+
+/*Dropdown menu is hidden by default until it is toggled by the user*/
+.accessibility-dropdown-content .dropdown-content .accessibility-options {
+  background: var(--dark-black);
+  display: none;
+}
+
+/*Provide space around dropdown menu icons to reduce clutter*/
+.accessibility-dropdown-content .dropdown-content i {
+  margin: 0.3em 0.41em;
+}
+
+/*Align the accessibility button to be flush with the bottom of the fixed Navigation Menu on tablet and mobile
+    devices*/
+@media screen and (max-width: 1010px) {
+  .accessibility-dropdown-content {
+    top: 6.2em !important;
+  }
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+/*Hamburger menu that creates a clean navigational interface on tablet and mobile devices--------*/
+/*-----------------------------------------------------------------------------------------------*/
+
+/*Align hamburger menu in the top right corner with the company header and logo*/
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  /*The hamburger menu is composed of three horizontal lines
+    Evenly space the horizontal lines from one another*/
+  justify-content: space-between;
+  position: absolute;
+  top: 2.94em;
+  right: 1rem;
+  width: 1.6875em;
+  height: 1.375em;
+}
+
+/*Create each horizontal menu-bar in the hamburger menu for mobile and tablet devices*/
+.mobile-menu-toggle .menu-bar {
+  height: 0.2em;
+  width: 100%;
+  background-color: var(--dark-black);
+  border-radius: 0.1em;
+}
+
+/*-----------------------------------------------------------------*/
+/*Mobile features common to all pages------------------------------*/
+/*-----------------------------------------------------------------*/
+
+@media screen and (max-width: 570px) {
+  /*---------------------------------------------------------------*/
+  /*Sticky accessibility button tablet layout----------------------*/
+  /*---------------------------------------------------------------*/
+
+  /*Position accessibility button directly below sticky navigation menu-bar*/
+  .accessibility-dropdown-content {
+    top: 5.65em;
+  }
+
+  /*---------------------------------------------------------------*/
+  /*Footer layout for mobile devices-------------------------------*/
+  /*---------------------------------------------------------------*/
+
+  /*Each footer section column occupies full width of the viewport*/
+  .footer-section {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  /*-----------------------------------------------------------------*/
+  /*Navigation menu-bar mobile layout-------------------------------------*/
+  /*-----------------------------------------------------------------*/
+
+  /*Hide 'Toggle Contrast' button to create a clean interface*/
+  .toggle-contrast {
+    display: none;
+  }
+
+  /*Display hamburger menu in top right corner*/
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  /*Hide navigation dropdown menu by default before being toggled by the hamburger menu*/
+  .nav-links {
+    width: 100%;
+    display: none;
+  }
+
+  /*Navigation links can become visible through user interaction with the hamburger menu*/
+  .nav-links.active {
+    display: flex;
+  }
+
+  /*Make the navigation links vertically stacked on top of one another*/
+  .nav-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  /*Center each navigational link within the dropdown menu*/
+  .nav-links ul li {
+    text-align: center;
+  }
+
+  /*Make each navigation link distinct by spacing them out from one another*/
+  .nav-links ul li a {
+    padding: 0.5rem 1rem;
+  }
+
+  /*Remove line animation above navigation links to yield a cleaner interface*/
+  .nav-links a:hover::after {
+    transform: scale(0, 0);
+  }
+
+  /*----------------------------------------------------------------------------------------------------*/
+  /*Hamburger button adjustments for when standard navigation menu-bar becomes fixed on mobile layouts-------*/
+  /*----------------------------------------------------------------------------------------------------*/
+
+  /*Increase visibility of the hamburger button by making it bright to contrast the fixed navigation menu-bar dark
+    background color*/
+  .main-navigation.sticky .mobile-menu-toggle .menu-bar {
+    background-color: var(--almost-white);
+  }
+
+  /*Vertically align hamburger icon relative to company logo position for the fixed navigation menu-bar*/
+  .main-navigation.sticky .mobile-menu-toggle {
+    top: 2.4em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /*Add a faint shadow to separate the navigational area from the main content*/
+  .main-navigation {
+    display: block;
+  }
+  /*Emphasize the company logo, 'Chess News', and its corresponding icon composed of chess pieces*/
+  .company-logo {
+    text-align: center;
+  }
+}
+
+/*---------------------------------------------------------------*/
+/*Tablet features common to all pages----------------------------*/
+/*---------------------------------------------------------------*/
+
+@media screen and (min-width: 570px) and (max-width: 1010px) {
+  /*---------------------------------------------------------------*/
+  /*Sticky accessibility button tablet layout----------------------*/
+  /*---------------------------------------------------------------*/
+
+  /*Position accessibility button directly below sticky navigation menu-bar*/
+  .accessibility-dropdown-content {
+    top: 5.65em;
+  }
+
+  /*---------------------------------------------------------------*/
+  /*Footer layout for tablet devices-------------------------------*/
+  /*---------------------------------------------------------------*/
+
+  /*Two footer section columns occupy the full width of the viewport*/
+  .footer-section {
+    width: 50%;
+    margin-bottom: 2em;
+  }
+
+  /*-----------------------------------------------------------------*/
+  /*Navigation menu-bar tablet layout-------------------------------------*/
+  /*-----------------------------------------------------------------*/
+
+  /*Hide 'Toggle Contrast' button to create a clean interface*/
+  .toggle-contrast {
+    display: none;
+  }
+
+  /*Display hamburger menu in top right corner*/
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  /*Hide navigation dropdown menu by default before being toggled by the hamburger menu*/
+  .nav-links {
+    width: 100%;
+    display: none;
+  }
+
+  /*Navigation links can become visible through user interaction with the hamburger menu*/
+  .nav-links.active {
+    display: flex;
+  }
+
+  /*Make the navigation links vertically stacked on top of one another*/
+  .nav-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  /*Center each navigational link within the dropdown menu*/
+  .nav-links ul li {
+    text-align: center;
+  }
+
+  /*Make each navigation link distinct by spacing them out from one another*/
+  .nav-links ul li a {
+    padding: 0.5rem 1rem;
+  }
+
+  /*Remove line animation above navigation links to yield a cleaner interface*/
+  .nav-links a:hover::after {
+    transform: scale(0, 0);
+  }
+
+  /*----------------------------------------------------------------------------------------------------*/
+  /*Hamburger button adjustments for when standard navigation menu-bar becomes fixed on tablet layouts-------*/
+  /*----------------------------------------------------------------------------------------------------*/
+
+  /*Increase visibility of the hamburger button by making it bright to contrast the fixed navigation menu-bar dark
+    background color*/
+  .main-navigation.sticky .mobile-menu-toggle .menu-bar {
+    background-color: var(--almost-white);
+  }
+
+  /*Vertically align hamburger icon relative to company logo position for the fixed navigation menu-bar*/
+  .main-navigation.sticky .mobile-menu-toggle {
+    top: 2.37em;
+  }
+}
+
+/*-----------------------------------------------------------------------*/
+/*Fade in effect used in every page except for the 'About Us' page-------*/
+/*-----------------------------------------------------------------------*/
+
+/*Set up element to be transparent by default*/
+.fade-in-effect {
+  opacity: 0;
+  /*Fade in effect is a smooth transition*/
+  transition: all 0.4s ease-in;
+}
+
+/*Element becomes visible when page is scrolled beyond a threshold position*/
+.fade-in-effect.appear {
+  /*Element fades in when it is sufficiently visible within the viewport*/
+  opacity: 1;
+}
+
+/*-----------------------------------------------------------------------*/
+/*Footer video with text on top-------*/
+/*-----------------------------------------------------------------------*/
+
+.footer {
+  background: var(--dark-black);
+  padding: 30px 0px;
+  font-family: var(--main-header);
+  font-size: 1.2em;
+  text-align: center;
+}
+
+h4 {
+  font-family: var(--main-header);
+  font-weight: 400;
+  font-size: 0.73em;
+  text-align: center;
+  align-self: center;
+}
+
+.footer .footer-row {
+  width: 100%;
+  margin: 1% 0%;
+  padding: 0.6% 0%;
+  color: var(--almost-white);
+  font-size: 0.8em;
+}
+
+.footer .footer-row a {
+  text-decoration: none;
+  color: var(--almost-white);
+  transition: 0.5s;
+}
+
+.footer .footer-row a:hover {
+  color: var(--header-yellow);
+}
+
+.footer .footer-row ul {
+  width: 100%;
+}
+
+.footer .footer-row ul li {
+  display: inline-block;
+  margin: 0px 30px;
+}
+
+.footer .footer-row a i {
+  font-size: 2em;
+  margin: 0% 1%;
+}
+
+@media (max-width: 720px) {
+  .footer {
+    text-align: left;
+    padding: 5%;
+  }
+
+  .footer .footer-row ul li {
+    display: block;
+    margin: 10px 0px;
+    text-align: left;
+  }
+
+  .footer .footer-row a i {
+    margin: 0% 3%;
+  }
+}
+
+/*-----------------------------------------------------------------------*/
+/*Hero video with text on top-------*/
+/*-----------------------------------------------------------------------*/
+/* The Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 99; /* Sit on top */
+  left: 0;
+  top: 30%;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  width: 80%;
+  height: 400px;
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.hero-video {
+  position: relative;
+  padding: 30px 0px 0px 0px;
+  height: auto;
+}
+
+.hero-video video {
+  position: relative;
+  z-index: 0;
+}
+
+.video-text-overlay {
+  background-color: rgba(35, 37, 54, 0.7);
+  width: 100%;
+  padding: 30px 10px 30px 10px;
+  position: absolute;
+  top: 50%;
+  /* Align vertically in the center */
+  left: 50%;
+  /* Align horizontally in the center */
+  transform: translate(-50%, -50%);
+  /* Center the element precisely */
+  z-index: 1;
+  color: white;
+  text-align: center;
+}
+
+.video-text-overlay p {
+  color: var(--almost-white);
+  padding: 20px;
+}
+
+/* The above code is defining CSS styles for a button element that is a child of an element with the
+class "video-text-overlay". It sets the background color to a custom CSS variable called
+"--header-yellow" and the text color to a custom CSS variable called "--dark-black". */
+.video-text-overlay button {
+  background-color: var(--header-yellow);
+  color: var(--dark-black);
+}
+
+.video-text-overlay button:hover {
+  background-color: var(--dark-black);
+  color: var(--almost-white);
+}
+
+@media (max-width: 600px) {
+  .video-text-overlay {
+    background-color: rgba(35, 37, 54);
+    width: 90%;
+    position: relative;
+    top: 145px;
+    padding: 30px 0px 30px 0px;
+  }
+  .video-text-overlay form p {
+    padding: 20px;
+  }
+}
+/*-----------------------------------------------------------------------*/
+/* Style for the main section */
+/*-----------------------------------------------------------------------*/
+/* Style for the subscribe section */
+/* Style for the subscribe section */
+.subscribe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--almost-white);
+  overflow: hidden; /* Add this to hide overflow */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  margin: 40px 0px 0px 0px;
+}
+
+.subscribe-container img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  /* padding: 0px 10px 0 10px; */
+}
+
+.subscribe-text {
+  padding: 0px 40px 0 40px;
+}
+
+@media (max-width: 710px) {
+  .subscribe-container {
+    display: block;
+  }
+  .subscribe-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0px 0px 20px 0px;
+  }
+
+  .subscribe-text {
+    padding: 0px 40px 40px 40px;
+    text-align: center;
+  }
+}
+
+/*-----------------------------------------------------------------------*/
+/* Style for the story section on homepage */
+/*-----------------------------------------------------------------------*/
+/* Style for the cards */
+
+.card-container {
+  max-width: 100%;
+  padding: 10px 10px 10px 10px;
+  margin: 20px 20px 20px 20px;
+  height: auto;
+  text-align: center;
+}
+
+.cards-heading {
+  font-size: 32px;
+  text-align: left;
+}
+
+.cards {
+  display: flex;
+  padding: 25px 0px;
+  list-style: none;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.card {
+  max-width: 50% !important;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 100%;
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+  scroll-snap-align: start;
+  transition: all 0.2s;
+}
+.card-content {
+  padding: 1px 2px 15px 2px;
+  z-index: 1;
+  /* Bring the content to the front */
+  max-width: 100%; /* Adjust to fit the content inside the card */
+}
+.card-content p {
+  padding-top: 140px;
+}
+
+.card-image {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.card:not(:last-child) {
+  margin-right: 10px;
+}
+
+.card:hover {
+  color: var(--almost-white);
+  background: var(--header-yellow);
+}
+/* 
+.card-content {
+  margin: 20px 0;
+  max-width: 50%;
+} */
+
+.card .card-link-wrapper {
+  margin-top: auto;
+}
+
+.card .card-link {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background: var(--dark-black);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.cards::-webkit-scrollbar {
+  height: 12px;
+}
+
+.cards::-webkit-scrollbar-thumb,
+.cards::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background: var(--dark-black);
+}
+
+.cards::-webkit-scrollbar-track {
+  background: var(--thumb);
+}
+
+@media (min-width: 500px) {
+  .card {
+    flex-basis: calc(50% - 10px);
+  }
+
+  .card:not(:last-child) {
+    margin-right: 20px;
+  }
+  .card-content p {
+    padding-top: 80%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .card-text {
+    text-align: center;
+    padding-top: 20px;
+    margin: 0px;
+  }
+}
+
+@media (min-width: 700px) {
+  .card {
+    flex-basis: calc(calc(100% / 2) - 20px);
+  }
+
+  .card:not(:last-child) {
+    margin: 0px 20px 0px 20px;
+  }
+  .card-content p {
+    padding-top: 80%;
+  }
+}
+
+@media (min-width: 900px) {
+  .card {
+    flex-basis: calc(35% - 40px);
+  }
+
+  .card:not(:last-child) {
+    margin: 0px 20px 0px 20px;
+  }
+  .card-content p {
+    padding-top: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card {
+    flex-basis: calc(25% - 30px);
+  }
+
+  .card:not(:last-child) {
+    margin: 0px 20px 0px 20px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .card {
+    flex-basis: calc(25% - 60px);
+  }
+
+  .card:not(:last-child) {
+    margin: 0px 40px 0px 40px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .card {
+    flex-basis: calc(25% - 50px);
+  }
+
+  .card:not(:last-child) {
+    margin: 0px 35px 0px 35px;
+  }
+
+  .card-content p {
+    padding-top: 75%;
+  }
+}
+
+/* Style for the post-blocks section */
+#post-blocks ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* Add spacing between items */
+}
+
+#post-blocks li {
+  width: 48%;
+  /* Each item takes up 48% of the available width to allow for spacing */
+  box-sizing: border-box;
+  /* Include padding and border in the item's width */
+  margin: 1%;
+  /* Add margin between items */
+  padding: 1%;
+}
+
+#post-blocks p {
+  padding-bottom: 20px;
+}
+
+/* Style for the image and hover effect */
+.imgover {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.imgover img {
+  max-width: 100%;
+  /* Make sure the image doesn't exceed its container */
+  transition: transform 0.3s;
+  /* Add a smooth transition effect on hover */
+}
+
+.imgover:hover img {
+  transform: scale(1.1);
+  /* Enlarge the image on hover */
+}
+
+@media (max-width: 710px) {
+  #post-blocks li {
+    width: 100%;
+    /* Each item takes up 48% of the available width to allow for spacing */
+    box-sizing: border-box;
+    /* Include padding and border in the item's width */
+    margin: 2%;
+    /* Add margin between items */
+    padding: 2%;
+  }
+}
+.contact-sec-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: var(--header-yellow);
+  padding: 5%;
+  text-align: left;
+}
+
+.contact-sec-container h1 {
+  padding: 20px;
+  color: var(--dark-black);
+}
+/* .contact-sec-container button {
+  padding-right: 2%;
+  width: 170px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+} */
+
+@media (max-width: 710px) {
+  .contact-sec-container {
+    display: block;
+    height: 300px;
+    padding: 5%;
+    text-align: center;
+  }
+}
+/*-----------------------------------------------------------------------*/
+/* code for news section */
+/*-----------------------------------------------------------------------*/
+.news-container {
+  display: flex;
+  background-color: var(--main-background);
+  padding: 20px;
+}
+
+.left-column {
+  flex: 60%;
+  background-color: var(--almost-white);
+  /* padding: 40px; */
+  margin: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.left-column:hover {
+  transform: scale(1.01);
+  transition: transform 0.4s;
+}
+.left-column h1 {
+  padding: 20px 40px 10px 40px;
+}
+.left-column p {
+  padding: 0px 40px 10px 40px;
+}
+
+.image-with-boxes {
+  position: relative; /* Ensure the pseudo-elements are positioned relative to this container */
+}
+
+.image-with-boxes::before,
+.image-with-boxes::after {
+  content: '';
+  position: absolute;
+  height: 10px;
+  bottom: 0;
+}
+
+/* Define the colors for the boxes */
+.image-with-boxes::before {
+  background-color: var(--dark-black);
+  width: 30%;
+  z-index: 1;
+}
+
+.image-with-boxes::after {
+  background-color: var(
+    --header-yellow
+  ); /* Change this to your desired color */
+  left: 30%;
+  width: 70%;
+}
+
+/* boxes at bottom */
+.section-breaker {
+  position: relative; /* Ensure the pseudo-elements are positioned relative to this container */
+  margin: 20px 0px 80px 0px;
+}
+
+.section-breaker::before,
+.section-breaker::after {
+  content: '';
+  position: absolute;
+  height: 10px;
+  bottom: 0;
+}
+
+/* Define the colors for the boxes */
+.section-breaker::before {
+  background-color: var(--dark-black);
+  width: 70%;
+  z-index: 1;
+}
+
+.section-breaker::after {
+  background-color: var(
+    --header-yellow
+  ); /* Change this to your desired color */
+  left: 70%;
+  width: 30%;
+}
+
+figcaption {
+  font-family: var(--main-text);
+}
+
+.left-column img,
+.right-column img {
+  max-width: 100%;
+  height: auto;
+}
+
+.left-column figure {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.image-with-boxes img:hover {
+  transform: scale(1);
+}
+
+.left-column figure:hover {
+  transform: scale(1.1);
+}
+
+.left-column figure img {
+  transition: transform 0.3s;
+}
+
+.left-column figure:hover img {
+  -ms-transform: scale(1.5);
+  /* IE 9 */
+  -webkit-transform: scale(1.5);
+  /* Safari 3-8 */
+  transform: scale(1);
+}
+.left-column h1,
+p {
+  color: var(--dark-black);
+}
+.right-column-wrapper {
+  flex: 40%;
+  height: 100%;
+  background-color: var(--almost-white);
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  padding-bottom: 50px;
+}
+
+.right-column {
+  /* Your existing .right-column styles go here */
+  flex: 1; /* Takes up available space */
+}
+
+.new-column {
+  /* Your new column styles go here */
+  flex: 1; /* Takes up available space */
+}
+
+.right-column {
+  flex: 40%;
+  height: 100%;
+  background-color: var(--almost-white);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.right-column:hover {
+  transform: scale(1.01);
+  transition: transform 0.4s;
+}
+.right-column h1 {
+  font-size: 3vw;
+}
+.right-column h1 {
+  padding: 0px 20px 0px 20px;
+  color: var(--dark-black);
+}
+
+.right-column h3 {
+  padding: 20px 20px 0px 20px;
+}
+
+.right-column p {
+  padding: 20px 0px 20px 20px;
+  display: inline;
+  margin: 10px 0px 10px 0px;
+}
+.farmers-tips {
+  padding: 40px 0px 40px 0px;
+}
+
+.hidden-content {
+  padding: 0px 20px 20px 20px;
+  font-family: var(--main-text);
+  line-height: 2em;
+  display: none;
+}
+
+.hidden-content a {
+  margin: 20px 0px 20px 0px;
+}
+
+.learn-more-button {
+  cursor: pointer;
+  color: var(--dark-black);
+  text-decoration: underline;
+  display: inline; /* Add this to display inline */
+}
+.expanded {
+  display: flex;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  width: 100%;
+}
+
+.image {
+  width: 30%;
+  text-align: center; /* Center the image and figcaption */
+}
+
+.image img {
+  width: 100%;
+  height: 200px; /* Set to whatever fixed height you want */
+  object-fit: cover; /* This will make sure the images are all uniform in size */
+}
+
+.image figcaption {
+  margin-top: 10px; /* Add a bit of space between the image and the caption */
+}
+
+@media (max-width: 600px) {
+  .news-container {
+    display: block;
+    padding: 10px;
+  }
+
+  .left-column {
+    flex: 100%;
+    margin: 0px 0px 20px 0px;
+    text-align: center;
+  }
+  .right-column {
+    flex: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 50px;
+    text-align: center;
+  }
+
+  .right-column h1 {
+    font-size: 8vw;
+  }
+
+  .right-column p,
+  span {
+    font-size: 3vw;
+  }
+
+  .left-column figure {
+    position: block;
+  }
+
+  .image-container {
+    display: block;
+  }
+
+  .image {
+    width: 100%;
+  }
+  figcaption {
+    padding-bottom: 20px;
+  }
+
+  .section-breaker {
+    padding: 0px 0px 20px 0px;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* about us */
+.about-us {
+  margin: 40px 0px -4px 0px;
+}
+.hero-container {
+  position: relative;
+  background-color: transparent;
+  /* Set container to transparent */
+  align-items: center;
+  /* Hide content that overflows */
+}
+
+.white-box {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  background-color: var(--almost-white);
+  width: 40%;
+  height: 240%;
+  padding: 30px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.white-box h2 {
+  margin: 0;
+}
+
+.content {
+  width: 46%;
+  margin-left: 52%;
+  margin-bottom: 5%;
+  padding: 30px;
+  color: var(--dark-black);
+  /* Set text color to white */
+}
+
+.content p {
+  margin: 0;
+}
+
+.hero-image {
+  width: 90%;
+  align-content: center;
+  justify-content: center;
+  margin: -5% 5% 0% 5%;
+  /* Overlap the hero image by 10% */
+  z-index: -1;
+  /* Place the image below other content */
+}
+
+/* Create two equal columns that floats next to each other */
+.intro-row {
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  width: 100%;
+  height: 200%;
+  /* Use full width */
+}
+
+.intro-column-1,
+.intro-column-2 {
+  flex: 1;
+  height: 340px;
+  background-color: var(--header-yellow);
+  color: var(--dark-black);
+  padding: 20px;
+
+  /* Center-align content */
+}
+
+.intro-column-1 {
+  padding: 40px 0px 40px 40px;
+  margin-left: 50px;
+}
+
+.intro-column-2 {
+  padding: 40px 40px 40px 40px;
+  margin-right: 50px;
+}
+
+.about-us-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: var(--dark-black);
+}
+
+.about-us-image {
+  max-width: 50%;
+  height: auto;
+  object-fit: cover;
+  padding: 50px;
+}
+
+.aboutus-text {
+  flex: 1;
+  padding: 20px 20px; /* Add some spacing between text and image */
+  color: var(--almost-white);
+  border: 2px solid var(--header-yellow);
+}
+
+.aboutus-text h2 {
+  margin: 0;
+}
+
+.aboutus-text p {
+  margin: 10px 0;
+  color: var(--almost-white);
+}
+
+/* Meet the team */
+
+.meet-the-team {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+.meet-the-team-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  overflow: hidden;
+  /* Add this to hide the overflow of the image */
+}
+
+.team-image {
+  display: block;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Maintain aspect ratio and cover the container */
+}
+
+.team-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 0;
+  height: 100%;
+  transition: 0.5s ease;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  /* Square shape */
+}
+
+.meet-the-team-container:hover .team-image-overlay {
+  width: 100%;
+  left: 0;
+}
+
+.social-icon {
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.social-icon a {
+  color: white;
+}
+.social-icon h4 {
+  color: white;
+  font-size: 20px;
+  text-align: left;
+}
+
+.social-icon p {
+  color: white;
+  font-size: 10px;
+  text-align: left;
+  padding-bottom: 20px;
+}
+.fa-user:hover {
+  color: #eee;
+}
+
+/* Customer feedback */
+
+.customer-review-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  width: 100%;
+  background-color: var(--header-yellow);
+  color: var(--dark-black);
+}
+
+.customer-review-left {
+  flex: 1;
+  padding-right: 20px;
+  color: var(--dark-black);
+}
+
+.customer-review-left p {
+  color: var(--dark-black);
+}
+
+.customer-review-left h2 {
+  margin: 0;
+}
+
+.customer-description {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.customer-review-right {
+  flex: 1;
+  width: 50%;
+}
+
+.customer-review-right p {
+  color: var(--dark-black);
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  color: var(--dark-black);
+}
+
+.feedback {
+  border: 1px solid var(--dark-black);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.feedback h3 {
+  margin: 0;
+}
+
+.customer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.customer-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.customer-image img {
+  width: 100%;
+  height: auto;
+}
+
+.customer-name {
+  margin: 0;
+}
+
+/* About us Subscribers */
+
+.join-our-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  margin: 40px;
+}
+
+.team-container button {
+  margin: 20px 0px 20px 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  .about-us {
+    margin: 33px 0px -4px 0px;
+  }
+  .white-box {
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: auto; /* Let the height adjust automatically */
+  }
+
+  .content {
+    width: 100%;
+    margin-left: 0;
+    padding: 320px 20px 40px 20px;
+    text-align: center;
+    background-color: var(--dark-black);
+  }
+
+  .content p {
+    color: var(--almost-white);
+  }
+
+  .hero-image {
+    width: 100%;
+    margin: -28px 0px 0px 0px;
+  }
+
+  .intro-row {
+    flex-direction: column;
+    width: 100%; /* Stack the columns vertically */
+  }
+
+  .intro-column-1,
+  .intro-column-2 {
+    width: 100%;
+    height: auto; /* Let the height adjust automatically */
+    padding: 20px;
+    margin: 10px 0;
+  }
+
+  .about-us-container {
+    flex-direction: column-reverse;
+  }
+
+  .about-us-image,
+  .aboutus-text {
+    width: 100%; /* Make them take full width */
+  }
+
+  .about-us-image {
+    order: 2;
+    max-width: 100%;
+    padding: 20px 0px 20px 0px;
+  }
+
+  .aboutus-text {
+    order: 1;
+    padding: 10px;
+  }
+
+  .meet-the-team {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .meet-the-team-container {
+    margin: 20px 40px 20px 40px;
+  }
+
+  .customer-review-section {
+    flex-direction: column;
+  }
+
+  .customer-review-left,
+  .customer-review-right {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .sub-newsletter {
+    flex-direction: column;
+  }
+
+  .sub-container button {
+    margin: 10px 0; /* Adjusted for vertical layout */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .meet-the-team {
+    padding: 0px;
+  }
+
+  .meet-the-team-container {
+    margin: 15px;
+  }
+}
+
+/* Contact-Us */
+
+.sub-newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  margin: 80px 0px 60px 0px;
+}
+
+.sub-container button {
+  margin: 20px 0px 20px 0px;
+}
+
+.subsection-img {
+  padding-top: 20px;
+}
+
+.timing-row {
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  width: 100%;
+  /* Use full width */
+}
+
+.timing-column-1,
+.timing-column-2 {
+  flex: 1;
+  height: 300px;
+  width: 50%;
+}
+
+.timing-column-1 {
+  padding: 40px 20px 0px 128px;
+}
+
+.timing-column-2 {
+  padding: 40px 128px 0px 20px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
+
+.contact-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  font-family: var(--main-text);
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+  .contact-form {
+    width: 100%;
+    padding: 20px 20px 20px 20px;
+  }
+
+  .timing-row {
+    display: block;
+    justify-content: flex-start;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    width: 100%;
+    /* Use full width */
+  }
+
+  .timing-column-1 {
+    padding: 40px 0px 10px 20px;
+    margin-left: 10px;
+  }
+
+  .timing-column-2 {
+    padding: 40px 0px 40px 20px;
+    width: 100%;
+    margin-left: 10px;
+  }
+  .timing-column-1,
+  .timing-column-2 {
+    flex: 1;
+    height: 200px;
+  }
+}
+
+.farmers-hero-image {
+  width: 100%;
+}
+
+.tips-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden; /* Add this to hide overflow */
+  color: var(--dark-black);
+  padding: 20px;
+  border-style: dotted solid dotted solid;
+}
+
+.tips-container img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  /* padding: 0px 10px 0 10px; */
+}
+
+.tip-text {
+  padding: 0px 40px 0 40px;
+}
+
+.tip-text button {
+  margin: 20px 0px 0px 0px;
+}
+
+.farmers-hero-section {
+  position: relative;
+  padding: 30px 0px 0px 0px;
+  height: auto;
+}
+
+.hero-img img {
+  position: relative;
+  z-index: 0;
+}
+
+.farmerimg-text-overlay {
+  background-color: rgba(35, 37, 54, 0.7);
+  width: 100%;
+  padding: 30px 10px 30px 10px;
+  position: absolute;
+  top: 50%;
+  /* Align vertically in the center */
+  left: 50%;
+  /* Align horizontally in the center */
+  transform: translate(-50%, -50%);
+  /* Center the element precisely */
+  z-index: 1;
+  color: white;
+  text-align: center;
+  font-family: var(--main-text);
+}
+
+.farmerimg-text-overlay p {
+  color: var(--almost-white);
+  padding: 20px;
+}
+
+/* The above code is defining CSS styles for a button element that is a child of an element with the
+class "video-text-overlay". It sets the background color to a custom CSS variable called
+"--header-yellow" and the text color to a custom CSS variable called "--dark-black". */
+.farmerimg-text-overlay button {
+  background-color: var(--header-yellow);
+  color: var(--dark-black);
+}
+
+.farmerimg-text-overlay button:hover {
+  background-color: var(--dark-black);
+  color: var(--almost-white);
+}
+@media (max-width: 600px) {
+  .farmerimg-text-overlay {
+    background-color: rgba(35, 37, 54);
+    width: 90%;
+    position: relative;
+    top: 145px;
+    padding: 30px 0px 30px 0px;
+  }
+  .farmerimg-text-overlay p,
+  h1 {
+    padding: 0px 30px 0px 0px;
+  }
+}
+@media only screen and (max-width: 970px) {
+  .tips-container {
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .tips-container img {
+    order: 1;
+    width: 100%; /* Take full width */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .tip-text {
+    order: 2;
+    padding: 40px; /* Update padding as needed */
+    text-align: center; /* Optional, to center-align the text */
+  }
+}
+
+.tractor-logo {
+  width: 10%;
+}

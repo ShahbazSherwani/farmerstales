@@ -1,9 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Kaushan+Script&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=REM:wght@600&family=Roboto+Serif:opsz,wght@8..144,300&display=swap'); /*------------------------------------------------------*/
-/*Set up custom colour and text style properties--------*/
-/*------------------------------------------------------*/
-
-/*Colors and font styles used throughout all five pages*/
+/* Global color and font variables */
 :root {
   --background-light: #bdc0c9;
   --background-medium: #7b76ad;
@@ -15,22 +11,19 @@
   --light-grey: rgb(214, 214, 214);
   --almost-white: rgb(248, 250, 255);
   --white: rgb(255, 255, 255);
-  --google-orange: #f1503b;
+  --bright-orange: #f1503b;
   --header-yellow: rgb(255, 208, 80);
-  /*Font used for company logo, page headers, and section headers with sans-serif fallback fonts*/
-  --main-header: 'REM', 'Verdana', sans-serif;
+  /* Global font variables for Headings and logo*/
+  --main-heading: 'REM', 'Verdana', sans-serif;
 
-  /*Font used for news article content with serif fallback fonts*/
-  --main-text: 'Roboto Serif', 'Georgia', serif;
+  /* Global font variable for paragraph text */
+  --main-paragraph-text: 'Roboto Serif', 'Georgia', serif;
 }
 
-/*---------------------------------------------------------------------------------------------*/
-/*Set up color scheme for accessibility features: low contrast mode and grayscale mode---------*/
-/*---------------------------------------------------------------------------------------------*/
+/*Global Variables for accessibility features: dark mode and grayscale mode */
 
-/*Grayscale mode in which color palette is composed of shades of grey
-    This mode can be toggled from the accessibility dropdown menu in the top-left corner*/
-.grayscale {
+/*Grayscale mode in which color palette is composed of shades of grey*/
+.grayscale-theme {
   --background-light: #dfdfdf;
   --background-medium: #969696;
   --background-dark: #474747;
@@ -41,9 +34,10 @@
   --light-grey: rgb(189, 189, 189);
   --almost-white: rgb(241, 241, 241);
   --white: rgb(255, 255, 255);
-  --google-orange: #c2c2c2;
+  --bright-orange: #c2c2c2;
 }
 
+/*Dark mode in which color palette is composed of shades of grey*/
 body.dark-theme {
   --background-light: #bdc0c9;
   --background-medium: #7b76ad;
@@ -54,92 +48,74 @@ body.dark-theme {
   --light-grey: rgb(214, 214, 214);
   --almost-white: #bdc0c9;
   --white: rgb(255, 255, 255);
-  --google-orange: rgb(145, 122, 89);
+  --bright-orange: rgb(145, 122, 89);
   --header-yellow: rgb(255, 208, 80);
   --main-background: rgb(96, 90, 105);
   transition: 0.5s;
 }
 
-/*Apply a grayscale filter on all images when grayscale mode is toggled from the accessibility dropdown menu*/
-.gray {
+/*Apply a grayscale filter across the whole website*/
+.gray-feature {
   filter: grayscale(1);
 }
 
-/*Improved legibility mode toggled by the first accessibility-options item of the accessible icon dropdown menu*/
-.readability-mode {
+/* Enhanced readability mode with the normal text feature */
+.normal-text-feature {
   /*All fonts changed to a legible font
     Fallback font ensures that the font will render*/
-  --main-header: 'Arial', sans-serif;
-  --fancy-header: 'Arial', sans-serif;
-  --main-text: 'Arial', sans-serif;
+  --main-heading: 'Arial', sans-serif;
+  --main-paragraph-text: 'Arial', sans-serif;
 }
 
-/*-------------------------------------------------------------------------------*/
-/*Style images to have an acceesible 'Zoom in' effect when hovered---------------*/
-/*-------------------------------------------------------------------------------*/
-
-/*Smooth the zoom in effect animation*/
-img {
-  transition: all 0.2s ease-out;
+/* CSS to underline all text for Text to speech function */
+.underline-all * {
+  text-decoration: underline !important;
 }
 
-/*Emphasize the given image by scaling up the image to mirror a "zoom in" effect*/
-img:hover {
-  transform: scale(1.05);
+/* CSS to remove underline from all text when Text to speech function is off */
+.no-underline * {
+  text-decoration: none !important;
 }
 
-/*---------------------------------------------------------------*/
-/*Common CSS that applies to all pages---------------------------*/
-/*---------------------------------------------------------------*/
+/*Global CSS for the whole website */
 
-/*Ensure that content, padding, and border fits within a given width or height*/
 * {
-  /*Aids in managing the size of all HTML elements*/
+  /* Manages the dimensions of all HTML elements for consistency */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/*Set uniform background color for each page*/
+/* Applies a consistent background color across all pages */
 body {
   background-color: var(--main-background);
   padding-top: 70px;
   transition: 0.5s;
 }
 
-/*Style common headers to create a uniform font style*/
+/* Standardizes header styles for uniform appearance */
 h1,
 h2,
 h3 {
-  font-family: var(--main-header);
-}
-
-/*When an accessibility feature is selected from the dropdown menu, a selected indicator will appear*/
-.changeOpacity {
-  /*Background of the menu item darkens when selected*/
-  /*When the feature is deselected, its color and opacity will return to normal*/
-  background: var(--dropdown-selected);
-}
-
-/*--------------------------------------------------------------*/
-/*Adjust the different headers to improve readability-----------*/
-/*--------------------------------------------------------------*/
-
-/*Uniform spacing for main headers and subheaders*/
-h1,
-h2,
-h3,
-h4 {
-  /*This spacing is important on mobile devices when text may wrap to multiple lines*/
+  font-family: var(--main-heading);
+  /*Applies a consistent spacing*/
   line-height: 1.8em;
 }
 
 /*Lighter weight for paragraph text to emphasize the headers*/
 p {
-  font-weight: 200;
   line-height: 2em;
-  font-family: var(--main-text);
-  color: var(--dark-black);
+  font-family: var(--main-paragraph-text);
+}
+
+/*zoom in effect with smooth animation when hover on images*/
+img {
+  transition: all 0.2s ease-out;
+}
+
+/*defining the zoom scale */
+img:hover {
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 1010px) {
@@ -148,9 +124,7 @@ p {
   }
 }
 
-/*---------------------------------------------------------------*/
-/*Main navigation menu-bar with five navigational links---------------*/
-/*---------------------------------------------------------------*/
+/*Main navigation menu-bar */
 
 .main-navigation {
   display: flex; /* Add flexbox layout */
@@ -177,96 +151,58 @@ p {
   flex-grow: 1;
 }
 
-/*Provide a uniform and readable font for the main navigation links*/
+/*main font for navigation buttons*/
 .main-navigation,
 button {
-  font-family: var(--main-header);
+  font-family: var(--main-heading);
 }
-
-/*Equally space the navigation links to create a cohesive appearance*/
+/* Styles the navigation links container using flexbox, ensuring full width, equal spacing between items, and custom right padding. */
 .nav-links ul {
   display: flex;
-  /*Prevent collision with 'Toggle Contrast' button by restricting horizontal space occupied by the links*/
   width: 100%;
   justify-content: space-between;
   margin: auto;
   padding: 0px 70px 0px 0px;
 }
 
-/*Make navigation interface cleaner by removing decorative elements*/
+/*removing the decorative elements*/
 .nav-links li {
   list-style: none;
 }
 
-/*Uniformly space out the navigation links*/
+/* spacing between the navigation links*/
 .nav-links li a {
   top: 0.4rem;
   display: block;
   font-size: 0.93em;
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--dark-black);
   padding: 1rem;
   position: relative;
   margin: 0.3em;
-  /*Smooth the transition from normal navigation menu-bar state to fixed navigation menu-bar state*/
   transition: 0.2s;
+  color: var(--dark-black);
 }
 
-/*Selected indicator (blue line) appears when a user hovers over a navigation link*/
-/*Indicate an interactive element by adding a subtle text color change when a navigation link is hovered*/
+/*adding an hover effect on navigation link*/
 .nav-links li a:hover {
-  color: var(--linkedin-blue);
+  color: var(--background-medium);
   transform: scale(1.2);
 }
 
-/*---------------------------------------------------------------------------------------*/
-/*Sticky navigation menu-bar for accessible navigation when page is vertically scrolled-------*/
-/*---------------------------------------------------------------------------------------*/
-
-/*Compact navigation menu-bar to not obstruct main viewport*/
-.main-navigation.sticky {
-  padding: 0.5em 1.5em;
+/*Changing the color of navigation as we scroll*/
+.main-navigation.fixed {
   background-color: var(--dark-black);
 }
 
-/*Brighten main title to contrast dark background and increase visibility*/
-.main-navigation.sticky .company-logo {
+/*changing the color of logo on scroll*/
+.main-navigation.fixed .company-logo {
   color: var(--almost-white);
-  padding: 0.6em 0.6em;
 }
 
-/*Brighten navigation link color to constrast dark background and increase visibility*/
-.main-navigation.sticky ul li a {
+/*changing the color of menu items on scroll*/
+.main-navigation.fixed ul li a {
   color: var(--almost-white);
   padding-bottom: 1.5em;
 }
-
-/*Reposition 'Toggle Constrast' button to be centered once the dimensions of the navigation menu-bar changes from
-a standard state to a fixed state*/
-.sticky-adjust {
-  margin-bottom: -0.65em;
-}
-
-/*Company logo (composed of two chess pieces) in a white box that becomes visible when the navigation menu-bar
-enters a fixed state*/
-.company-logo-scroll {
-  /*Invisible by default, since the logo is only visible against the dark background of the fixed navigation
-    menu*/
-  display: none;
-  position: absolute;
-  top: 0.4em;
-  left: 0.4em;
-  font-size: 2em;
-  border: 3px solid var(--almost-white);
-  padding: 0.2em;
-}
-
-/*Make the company logo visible when the fixed Navigation Menu is triggered by the user scrolling past a
-vertical scroll menu-bar threshold*/
-/* .company-logo-scroll-active {
-  display: inline;
-} */
 
 @media screen and (max-width: 1010px) {
   /*Prevent the company logo from being displayed twice on mobile and tablet devices*/
@@ -275,39 +211,27 @@ vertical scroll menu-bar threshold*/
   }
 }
 
-/*---------------------------------------------------------------------------*/
-/*Smooth scrolling back to top button that reduces vertical scrolling -------*/
-/*---------------------------------------------------------------------------*/
-
-/*Position the back to top button as to not obstruct visibility of main content within the viewport*/
+/*code for scroll on top button which is not visible on load*/
 .scroll-to-top-button {
-  /*Button is fixed to the bottom-right corner of the viewport*/
   position: fixed;
   right: 1em;
   bottom: 1em;
-  /*Visible over all other elements*/
   z-index: 99;
   font-size: 1.2em;
   color: var(--white);
   background-color: var(--dark-black);
   border: 0.11em solid var(--light-grey);
-  /*Button is not visible on page load
-    Button becomes visible once the page has reached a vertical scroll threshold*/
   display: none;
 }
 
-/*Indicate the button as an interactive element by providing a hover effect*/
+/*adding an hover effect*/
 .scroll-to-top-button:hover {
   background-color: var(--header-yellow);
   border: 0.11em solid var(--light-grey);
   color: var(--dark-black);
 }
 
-/*------------------------------------------------------------------------------------------------------------*/
-/*'Toggle Contrast' button that is high contrast by default. Can be toggled to low contrast and vice versa.---*/
-/*------------------------------------------------------------------------------------------------------------*/
-
-/*Establish button style that is used throughout each web page*/
+/*Global button style*/
 button {
   color: var(--almost-white);
   padding: 1.3em 1.3em;
@@ -319,14 +243,13 @@ button {
   text-decoration: none;
 }
 
-/*Vertically align the 'Toggle Contrast' button with the navigation links*/
-
-/*Indicate the 'Toggle Contrast' button as an interactive element by adding a selected indicator when hovered*/
+/*Global hover animation for buttons*/
 button:hover {
   background-color: var(--dark-blue);
   transition: ease-in-out 0.1s;
 }
 
+/*Global anchor button style*/
 .anchor-button {
   color: var(--almost-white);
   padding: 1.5em 1.5em;
@@ -336,40 +259,34 @@ button:hover {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-  font-family: var(--main-header);
+  font-family: var(--main-heading);
   font-size: 0.8em;
 }
-
+/*Global anchor hover animation for buttons*/
 .anchor-button:hover {
   background-color: var(--header-yellow);
   transition: ease-in-out 0.1s;
   color: var(--dark-black);
 }
-/*--------------------------------------------------------------------------------------------------------------*/
-/*Fixed accessibility menu (wheelchair icon): offers font readability, link underlining, and grayscale mode-----*/
-/*--------------------------------------------------------------------------------------------------------------*/
 
-/*Prevent accessibility menu from obstructing main viewport content by fixing it to the left side of the screen*/
+/*code for accesibility menu*/
 .accessibility-dropdown-content {
   position: absolute;
-  /*Align with the bottom of the sticky navigation menu-bar for fluidity*/
   top: 30%;
   right: 2%;
-  /*Make menu visible and accessible at all times*/
+  /*keeping the button on top*/
   z-index: 99;
-  /*Transparent background would result in collisions with elements (lower z-index) that are beneath the menu*/
   background: var(--dark-black);
 }
 
-/*Indicate the wheelchair icon as interactive by adding an indicator when accessibility button is hovered*/
+/*adding an hover effect*/
 .accessibility-dropdown-content
   .dropdown-content
   .accessibility-toggle-bar:hover {
   background-color: var(--dark-blue);
 }
 
-/*Make accessibility menu uniform by applying the same background color indicator to dropdown menu items as the
-main wheelchair button*/
+/*adding background color on hover*/
 .accessibility-dropdown-content
   .dropdown-content
   .accessibility-options
@@ -377,29 +294,26 @@ main wheelchair button*/
   background: var(--dark-blue);
 }
 
-/*Provide positional frame of reference for the tooltip display*/
+/*keep the position of tool tip align with menu*/
 .accessibility-menu-bar {
   position: relative;
 }
 
-/*Create a high contrast, legible tooltip without the left pointing arrow*/
+/*tool tip with a pointing arrow*/
 .accessibility-menu-bar::before {
   position: absolute;
   display: none;
   border-radius: 0.16em;
-  /*Accessibility tooltip display information is based on the content within the title attribute*/
   content: attr(title);
   color: var(--white);
   padding: 1em;
-  /*Ensure that the tooltip is displayed on one line so each tooltip has the same vertical height*/
   width: 9em;
-  background-color: var(--google-orange);
-  /*Ensure that the tooltip is not obscured by other elements*/
+  background-color: var(--bright-orange);
   z-index: 99;
   font-size: 0.81em;
 }
 
-/*Small arrow on the left side of the accessibility tooltip that points towards the accessibility icon it describes*/
+/* arrow poistion*/
 .accessibility-menu-bar::after {
   content: '';
   position: absolute;
@@ -407,343 +321,205 @@ main wheelchair button*/
   height: 0;
   display: none;
   color: var(--dark-blue);
-  /*Ensure that the arrow visibility is not obscured*/
   z-index: 99;
   border: 0.41em solid transparent;
 }
 
-/*Make the tooltip visible*/
+/*displaying the tooltip*/
 .accessibility-menu-bar:hover::before,
 .accessibility-menu-bar:hover::after {
   display: block;
 }
 
-/*Position the tooltip to the right side of the accessibility icon it corresponds to*/
+/*positioning the tooltip*/
 .accessibility-menu-bar.tooltip-right:before {
   transform: translateY(-50%);
   top: 115%;
   left: calc(-265%);
 }
 
-/*Position the left pointing arrow adjacent to and to the left of the main tooltip body*/
+/*Positioning the arrow*/
 .accessibility-menu-bar.tooltip-right:after {
   transform: translateY(-50%);
   top: 70%;
   left: -15%;
   rotate: 180deg;
   border-left-width: 0;
-  border-right-color: var(--google-orange);
+  border-right-color: var(--bright-orange);
 }
 
-/*Increase visibility of the dropdown menu icons by contrasting them with the dark background*/
+/*defining the color of the accessibility items*/
 .accessibility-dropdown-content i {
   color: var(--almost-white);
 }
 
-/*Remove bullet points on menu items for a cleaner interface*/
+/*Removing bullet points*/
 .accessibility-dropdown-content .dropdown-content {
   list-style: none;
 }
 
-/*Dropdown menu appears when icon is clicked by the user*/
+/*dropdown menu items*/
 .accessibility-dropdown-content .dropdown-content {
   cursor: pointer;
-  /*Dropdown menu items positioned in relation to the menu*/
   position: relative;
 }
 
-/*Create distinguishable space for each icon item in the dropdown menu*/
+/*spacing between the content*/
 .accessibility-dropdown-content .dropdown-content a {
   display: block;
   text-decoration: none;
 }
 
-/*Make dropdown menu icons appear slightly smaller than the main wheelchair icon*/
+/*the size of icons*/
 .accessibility-dropdown-content .dropdown-content .accessibility-options a i {
   font-size: 1em;
   padding: 1em 0 1em 0.85em;
 }
 
-/*Re-centre the 'Underline Link' icon since it is positioned further to the right by default and misaligned*/
-.accessibility-dropdown-content
-  .dropdown-content
-  .accessibility-options
-  div:nth-child(2) {
-  /*Align the 'Underline Link' icon with the other icons*/
-  margin-left: -0.2em;
-}
-
-/*Provide space around wheelchair icon to reduce clutter*/
+/*centering the elements around the icons*/
 .accessibility-dropdown-content .dropdown-content .accessibility-toggle-bar i {
   font-size: 1.6em;
   padding: 0.4em 0.2em;
 }
 
-/*Dropdown menu is hidden by default until it is toggled by the user*/
+/*Making the dropdown menu hidden*/
 .accessibility-dropdown-content .dropdown-content .accessibility-options {
   background: var(--dark-black);
   display: none;
 }
 
-/*Provide space around dropdown menu icons to reduce clutter*/
+/*keeping the space around icons*/
 .accessibility-dropdown-content .dropdown-content i {
   margin: 0.3em 0.41em;
 }
 
-/*Align the accessibility button to be flush with the bottom of the fixed Navigation Menu on tablet and mobile
-    devices*/
-@media screen and (max-width: 1010px) {
-  .accessibility-dropdown-content {
-    top: 6.2em !important;
-  }
-}
+/*Mobile Hamburger menu for tablet and mobile devices*/
 
-/*-----------------------------------------------------------------------------------------------*/
-/*Hamburger menu that creates a clean navigational interface on tablet and mobile devices--------*/
-/*-----------------------------------------------------------------------------------------------*/
-
-/*Align hamburger menu in the top right corner with the company header and logo*/
+/*Displaying the mobile menu */
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;
-  /*The hamburger menu is composed of three horizontal lines
-    Evenly space the horizontal lines from one another*/
   justify-content: space-between;
   position: absolute;
-  top: 2.94em;
-  right: 1rem;
-  width: 1.6875em;
-  height: 1.375em;
+  top: 2.8em;
+  right: 1.2rem;
+  width: 1.8em;
+  height: 1.1em;
 }
 
-/*Create each horizontal menu-bar in the hamburger menu for mobile and tablet devices*/
+/*size of the menubar*/
 .mobile-menu-toggle .menu-bar {
-  height: 0.2em;
+  height: 0.3em;
   width: 100%;
   background-color: var(--dark-black);
-  border-radius: 0.1em;
 }
-
-/*-----------------------------------------------------------------*/
-/*Mobile features common to all pages------------------------------*/
-/*-----------------------------------------------------------------*/
 
 @media screen and (max-width: 570px) {
-  /*---------------------------------------------------------------*/
-  /*Sticky accessibility button tablet layout----------------------*/
-  /*---------------------------------------------------------------*/
-
-  /*Position accessibility button directly below sticky navigation menu-bar*/
-  .accessibility-dropdown-content {
-    top: 5.65em;
-  }
-
-  /*---------------------------------------------------------------*/
-  /*Footer layout for mobile devices-------------------------------*/
-  /*---------------------------------------------------------------*/
-
-  /*Each footer section column occupies full width of the viewport*/
-  .footer-section {
-    width: 100%;
-    margin-bottom: 2em;
-  }
-
-  /*-----------------------------------------------------------------*/
-  /*Navigation menu-bar mobile layout-------------------------------------*/
-  /*-----------------------------------------------------------------*/
-
-  /*Hide 'Toggle Contrast' button to create a clean interface*/
-  .toggle-contrast {
-    display: none;
-  }
-
-  /*Display hamburger menu in top right corner*/
+  /*fixed position for the hamburger menu*/
   .mobile-menu-toggle {
     display: flex;
   }
 
-  /*Hide navigation dropdown menu by default before being toggled by the hamburger menu*/
+  /*hiding the links so it can be toggle*/
   .nav-links {
     width: 100%;
     display: none;
   }
 
-  /*Navigation links can become visible through user interaction with the hamburger menu*/
+  /*displaying the navigations link once its clicked*/
   .nav-links.active {
     display: flex;
   }
 
-  /*Make the navigation links vertically stacked on top of one another*/
+  /*stacking the links on top of eachother*/
   .nav-links ul {
     width: 100%;
     flex-direction: column;
   }
 
-  /*Center each navigational link within the dropdown menu*/
+  /*aligning the links in the center*/
   .nav-links ul li {
     text-align: center;
   }
 
-  /*Make each navigation link distinct by spacing them out from one another*/
+  /*creating a gap in between links*/
   .nav-links ul li a {
     padding: 0.5rem 1rem;
   }
-
-  /*Remove line animation above navigation links to yield a cleaner interface*/
-  .nav-links a:hover::after {
-    transform: scale(0, 0);
-  }
-
-  /*----------------------------------------------------------------------------------------------------*/
-  /*Hamburger button adjustments for when standard navigation menu-bar becomes fixed on mobile layouts-------*/
-  /*----------------------------------------------------------------------------------------------------*/
-
-  /*Increase visibility of the hamburger button by making it bright to contrast the fixed navigation menu-bar dark
-    background color*/
-  .main-navigation.sticky .mobile-menu-toggle .menu-bar {
+  /* Chainging the color to white on dark background*/
+  .main-navigation.fixed .mobile-menu-toggle .menu-bar {
     background-color: var(--almost-white);
   }
 
-  /*Vertically align hamburger icon relative to company logo position for the fixed navigation menu-bar*/
-  .main-navigation.sticky .mobile-menu-toggle {
-    top: 2.4em;
+  @media screen and (max-width: 768px) {
+    /*stacking the item on top of eachother*/
+    .main-navigation {
+      display: block;
+    }
+    /*aligning the text on top of menu bar*/
+    .company-logo {
+      text-align: center;
+    }
   }
 }
-
-@media screen and (max-width: 768px) {
-  /*Add a faint shadow to separate the navigational area from the main content*/
-  .main-navigation {
-    display: block;
-  }
-  /*Emphasize the company logo, 'Chess News', and its corresponding icon composed of chess pieces*/
-  .company-logo {
-    text-align: center;
-  }
-}
-
-/*---------------------------------------------------------------*/
-/*Tablet features common to all pages----------------------------*/
-/*---------------------------------------------------------------*/
 
 @media screen and (min-width: 570px) and (max-width: 1010px) {
-  /*---------------------------------------------------------------*/
-  /*Sticky accessibility button tablet layout----------------------*/
-  /*---------------------------------------------------------------*/
-
-  /*Position accessibility button directly below sticky navigation menu-bar*/
-  .accessibility-dropdown-content {
-    top: 5.65em;
-  }
-
-  /*---------------------------------------------------------------*/
-  /*Footer layout for tablet devices-------------------------------*/
-  /*---------------------------------------------------------------*/
-
-  /*Two footer section columns occupy the full width of the viewport*/
-  .footer-section {
-    width: 50%;
-    margin-bottom: 2em;
-  }
-
-  /*-----------------------------------------------------------------*/
-  /*Navigation menu-bar tablet layout-------------------------------------*/
-  /*-----------------------------------------------------------------*/
-
-  /*Hide 'Toggle Contrast' button to create a clean interface*/
-  .toggle-contrast {
-    display: none;
-  }
-
-  /*Display hamburger menu in top right corner*/
+  /*fixed position for the hamburger menu*/
   .mobile-menu-toggle {
     display: flex;
   }
 
-  /*Hide navigation dropdown menu by default before being toggled by the hamburger menu*/
+  /*hiding the links so it can be toggle*/
   .nav-links {
     width: 100%;
     display: none;
   }
 
-  /*Navigation links can become visible through user interaction with the hamburger menu*/
+  /*displaying the navigations link once its clicked*/
   .nav-links.active {
     display: flex;
   }
 
-  /*Make the navigation links vertically stacked on top of one another*/
+  /*stacking the links on top of eachother*/
   .nav-links ul {
     width: 100%;
     flex-direction: column;
   }
 
-  /*Center each navigational link within the dropdown menu*/
+  /*aligning the links in the center*/
   .nav-links ul li {
     text-align: center;
   }
-
-  /*Make each navigation link distinct by spacing them out from one another*/
+  /*creating a gap in between links*/
   .nav-links ul li a {
     padding: 0.5rem 1rem;
   }
 
-  /*Remove line animation above navigation links to yield a cleaner interface*/
-  .nav-links a:hover::after {
-    transform: scale(0, 0);
-  }
-
-  /*----------------------------------------------------------------------------------------------------*/
-  /*Hamburger button adjustments for when standard navigation menu-bar becomes fixed on tablet layouts-------*/
-  /*----------------------------------------------------------------------------------------------------*/
-
-  /*Increase visibility of the hamburger button by making it bright to contrast the fixed navigation menu-bar dark
-    background color*/
-  .main-navigation.sticky .mobile-menu-toggle .menu-bar {
+  /*changing the color to white*/
+  .main-navigation.fixed .mobile-menu-toggle .menu-bar {
     background-color: var(--almost-white);
   }
-
-  /*Vertically align hamburger icon relative to company logo position for the fixed navigation menu-bar*/
-  .main-navigation.sticky .mobile-menu-toggle {
-    top: 2.37em;
-  }
 }
 
-/*-----------------------------------------------------------------------*/
-/*Fade in effect used in every page except for the 'About Us' page-------*/
-/*-----------------------------------------------------------------------*/
-
-/*Set up element to be transparent by default*/
-.fade-in-effect {
-  opacity: 0;
-  /*Fade in effect is a smooth transition*/
-  transition: all 0.4s ease-in;
-}
-
-/*Element becomes visible when page is scrolled beyond a threshold position*/
-.fade-in-effect.appear {
-  /*Element fades in when it is sufficiently visible within the viewport*/
-  opacity: 1;
-}
-
-/*-----------------------------------------------------------------------*/
-/*Footer video with text on top-------*/
-/*-----------------------------------------------------------------------*/
-
+/* Footer styling */
 .footer {
   background: var(--dark-black);
   padding: 30px 0px;
-  font-family: var(--main-header);
+  font-family: var(--main-heading);
   font-size: 1.2em;
   text-align: center;
 }
 
+/* General styling for h4 elements */
 h4 {
-  font-family: var(--main-header);
+  font-family: var(--main-heading);
   font-weight: 400;
   font-size: 0.73em;
   text-align: center;
   align-self: center;
 }
 
+/* Style for footer rows */
 .footer .footer-row {
   width: 100%;
   margin: 1% 0%;
@@ -752,133 +528,157 @@ h4 {
   font-size: 0.8em;
 }
 
+/* Link styling in footer row */
 .footer .footer-row a {
   text-decoration: none;
   color: var(--almost-white);
   transition: 0.5s;
 }
 
+/* Hover effect for links in footer row */
 .footer .footer-row a:hover {
   color: var(--header-yellow);
 }
 
+/* Style for footer row list */
 .footer .footer-row ul {
   width: 100%;
 }
 
+/* Style for list items in footer row */
 .footer .footer-row ul li {
   display: inline-block;
   margin: 0px 30px;
 }
 
+/* Icon styling in footer row */
 .footer .footer-row a i {
   font-size: 2em;
   margin: 0% 1%;
 }
 
+/* Responsive style for footer under 720px screen width */
 @media (max-width: 720px) {
   .footer {
     text-align: left;
     padding: 5%;
   }
 
+  /* List items become block elements under 720px screen width */
   .footer .footer-row ul li {
     display: block;
     margin: 10px 0px;
     text-align: left;
   }
 
+  /* Adjusts the margin around icons for smaller screens */
   .footer .footer-row a i {
     margin: 0% 3%;
   }
 }
 
-/*-----------------------------------------------------------------------*/
+/* Home Page styles */
+
 /*Hero video with text on top-------*/
-/*-----------------------------------------------------------------------*/
+
 /* The Modal */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 99; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 99;
   left: 0;
-  top: 30%;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Modal Content */
 .modal-content {
   position: relative;
+  top: 30%;
   margin: auto;
   padding: 20px;
-  background-color: #fff;
-  width: 80%;
+  background-color: var(--almost-white);
+  width: 50%;
   height: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Close Button */
 .close {
-  color: #aaa;
-  float: right;
+  color: var(--background-light);
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
+/* Close Button hover animation*/
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Main container for the hero video section */
 .hero-video {
   position: relative;
   padding: 30px 0px 0px 0px;
   height: auto;
 }
 
+/* Positioning and layer index for the video element */
 .hero-video video {
   position: relative;
   z-index: 0;
 }
 
+/* Styling the text overlay that appears on the video */
 .video-text-overlay {
   background-color: rgba(35, 37, 54, 0.7);
   width: 100%;
   padding: 30px 10px 30px 10px;
   position: absolute;
   top: 50%;
-  /* Align vertically in the center */
   left: 50%;
-  /* Align horizontally in the center */
   transform: translate(-50%, -50%);
-  /* Center the element precisely */
   z-index: 1;
   color: white;
   text-align: center;
 }
 
+/* Paragraph text styling within the video text overlay */
 .video-text-overlay p {
   color: var(--almost-white);
   padding: 20px;
 }
 
-/* The above code is defining CSS styles for a button element that is a child of an element with the
-class "video-text-overlay". It sets the background color to a custom CSS variable called
-"--header-yellow" and the text color to a custom CSS variable called "--dark-black". */
+/* Button styling within the video text overlay */
 .video-text-overlay button {
   background-color: var(--header-yellow);
   color: var(--dark-black);
 }
 
+/* Hover effect for buttons within the video text overlay */
 .video-text-overlay button:hover {
   background-color: var(--dark-black);
   color: var(--almost-white);
 }
 
+/* Responsive style adjustments for screens less than 600px wide */
 @media (max-width: 600px) {
+  /* Updates the overlay for smaller screens */
   .video-text-overlay {
     background-color: rgba(35, 37, 54);
     width: 90%;
@@ -886,14 +686,13 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
     top: 145px;
     padding: 30px 0px 30px 0px;
   }
+
+  /* Adjusts padding for paragraph elements within the form in overlay */
   .video-text-overlay form p {
     padding: 20px;
   }
 }
-/*-----------------------------------------------------------------------*/
-/* Style for the main section */
-/*-----------------------------------------------------------------------*/
-/* Style for the subscribe section */
+
 /* Style for the subscribe section */
 .subscribe-container {
   display: flex;
@@ -917,7 +716,7 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   padding: 0px 40px 0 40px;
 }
 
-@media (max-width: 710px) {
+@media (max-width: 1000px) {
   .subscribe-container {
     display: block;
   }
@@ -934,32 +733,35 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   }
 }
 
-/*-----------------------------------------------------------------------*/
 /* Style for the story section on homepage */
-/*-----------------------------------------------------------------------*/
+
 /* Style for the cards */
 
+/* Main container for card elements */
 .card-container {
   max-width: 100%;
-  padding: 10px 10px 10px 10px;
-  margin: 20px 20px 20px 20px;
+  padding: 10px;
+  margin: 20px;
   height: auto;
   text-align: center;
 }
 
+/* Heading for the cards section */
 .cards-heading {
   font-size: 32px;
-  text-align: left;
+  text-align: center;
 }
 
+/* Horizontal card list container */
 .cards {
   display: flex;
-  padding: 25px 0px;
+  padding: 25px 0;
   list-style: none;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
 }
 
+/* Individual card styling */
 .card {
   max-width: 50% !important;
   display: flex;
@@ -973,16 +775,20 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   scroll-snap-align: start;
   transition: all 0.2s;
 }
+
+/* Container for card content */
 .card-content {
   padding: 1px 2px 15px 2px;
   z-index: 1;
-  /* Bring the content to the front */
-  max-width: 100%; /* Adjust to fit the content inside the card */
+  max-width: 100%;
 }
+
+/* Paragraph styling within the card content */
 .card-content p {
   padding-top: 140px;
 }
 
+/* Image styling within the card */
 .card-image {
   width: 100%;
   height: 50%;
@@ -994,24 +800,23 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   overflow: hidden;
 }
 
+/* Margin adjustment for all cards except the last one */
 .card:not(:last-child) {
   margin-right: 10px;
 }
 
+/* Card hover effect */
 .card:hover {
   color: var(--almost-white);
   background: var(--header-yellow);
 }
-/* 
-.card-content {
-  margin: 20px 0;
-  max-width: 50%;
-} */
 
+/* Container for card link */
 .card .card-link-wrapper {
   margin-top: auto;
 }
 
+/* Styling for the card link */
 .card .card-link {
   display: inline-block;
   text-decoration: none;
@@ -1021,6 +826,8 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   border-radius: 8px;
   transition: background 0.2s;
 }
+
+/* Custom scrollbar styling */
 .cards::-webkit-scrollbar {
   height: 12px;
 }
@@ -1038,6 +845,9 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   background: var(--thumb);
 }
 
+/* Media queries for responsive design */
+
+/* Adjust card layout for mobile*/
 @media (min-width: 500px) {
   .card {
     flex-basis: calc(50% - 10px);
@@ -1171,6 +981,7 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
     padding: 2%;
   }
 }
+/* Container for the contact section, flex layout */
 .contact-sec-container {
   display: flex;
   justify-content: center;
@@ -1181,18 +992,13 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   text-align: left;
 }
 
+/* Styling for the heading within the contact section */
 .contact-sec-container h1 {
   padding: 20px;
   color: var(--dark-black);
 }
-/* .contact-sec-container button {
-  padding-right: 2%;
-  width: 170px;
-  display: block;
-  align-items: center;
-  justify-content: center;
-} */
 
+/* Responsive styles for screens up to 710px width */
 @media (max-width: 710px) {
   .contact-sec-container {
     display: block;
@@ -1201,39 +1007,47 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
     text-align: center;
   }
 }
-/*-----------------------------------------------------------------------*/
+
 /* code for news section */
-/*-----------------------------------------------------------------------*/
+/* Container that holds the news section */
 .news-container {
   display: flex;
   background-color: var(--main-background);
   padding: 20px;
 }
 
+/* Left column that takes up 60% of the container */
 .left-column {
   flex: 60%;
   background-color: var(--almost-white);
-  /* padding: 40px; */
   margin: 0px 20px 0px 20px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+/* Hover effect for left column */
 .left-column:hover {
   transform: scale(1.01);
   transition: transform 0.4s;
 }
+
+/* Styles for the heading in the left column */
 .left-column h1 {
   padding: 20px 40px 10px 40px;
 }
+
+/* Styles for the paragraph text in the left column */
 .left-column p {
   padding: 0px 40px 10px 40px;
 }
 
+/* Container for images with decorative boxes */
 .image-with-boxes {
-  position: relative; /* Ensure the pseudo-elements are positioned relative to this container */
+  position: relative;
 }
 
+/* Pseudo-elements that create decorative boxes */
 .image-with-boxes::before,
 .image-with-boxes::after {
   content: '';
@@ -1242,27 +1056,27 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   bottom: 0;
 }
 
-/* Define the colors for the boxes */
+/* Styling for the first decorative box */
 .image-with-boxes::before {
   background-color: var(--dark-black);
   width: 30%;
   z-index: 1;
 }
 
+/* Styling for the second decorative box */
 .image-with-boxes::after {
-  background-color: var(
-    --header-yellow
-  ); /* Change this to your desired color */
+  background-color: var(--header-yellow);
   left: 30%;
   width: 70%;
 }
 
-/* boxes at bottom */
+/* Container for a section break, similar to image-with-boxes */
 .section-breaker {
-  position: relative; /* Ensure the pseudo-elements are positioned relative to this container */
+  position: relative;
   margin: 20px 0px 80px 0px;
 }
 
+/* Pseudo-elements for section-breaker */
 .section-breaker::before,
 .section-breaker::after {
   content: '';
@@ -1271,31 +1085,33 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
   bottom: 0;
 }
 
-/* Define the colors for the boxes */
+/* First box for section-breaker */
 .section-breaker::before {
   background-color: var(--dark-black);
   width: 70%;
   z-index: 1;
 }
 
+/* Second box for section-breaker */
 .section-breaker::after {
-  background-color: var(
-    --header-yellow
-  ); /* Change this to your desired color */
+  background-color: var(--header-yellow);
   left: 70%;
   width: 30%;
 }
 
+/* Caption styles */
 figcaption {
-  font-family: var(--main-text);
+  font-family: var(--main-paragraph-text);
 }
 
+/* Image resizing for left and right columns */
 .left-column img,
 .right-column img {
   max-width: 100%;
   height: auto;
 }
 
+/* Styling for figure container within left column */
 .left-column figure {
   margin: 0;
   position: relative;
@@ -1303,48 +1119,55 @@ figcaption {
   transition: transform 0.2s;
 }
 
+/* Hover effect for images inside image-with-boxes */
 .image-with-boxes img:hover {
   transform: scale(1);
 }
 
+/* Hover effect for figure element in left column */
 .left-column figure:hover {
   transform: scale(1.1);
 }
 
+/* Transition effect for images in left column */
 .left-column figure img {
   transition: transform 0.3s;
 }
 
+/* Hover effect for images in IE 9 and Safari 3-8 */
 .left-column figure:hover img {
-  -ms-transform: scale(1.5);
-  /* IE 9 */
-  -webkit-transform: scale(1.5);
-  /* Safari 3-8 */
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
   transform: scale(1);
 }
+
+/* Text color for h1 and p in left column */
 .left-column h1,
 p {
   color: var(--dark-black);
 }
+
+/* Styling for right column wrapper */
 .right-column-wrapper {
   flex: 40%;
   height: 100%;
   background-color: var(--almost-white);
   display: flex;
-  flex-direction: column; /* stack children vertically */
+  flex-direction: column;
   padding-bottom: 50px;
 }
 
+/* Existing right-column styles */
 .right-column {
-  /* Your existing .right-column styles go here */
-  flex: 1; /* Takes up available space */
+  flex: 1;
 }
 
+/* New column styles */
 .new-column {
-  /* Your new column styles go here */
-  flex: 1; /* Takes up available space */
+  flex: 1;
 }
 
+/* Repeating right-column styles (you might want to merge this with the existing one) */
 .right-column {
   flex: 40%;
   height: 100%;
@@ -1353,52 +1176,69 @@ p {
   margin-top: 20px;
 }
 
+/* Hover effect for right column */
 .right-column:hover {
   transform: scale(1.01);
   transition: transform 0.4s;
 }
+
+/* Font size for h1 in right column */
 .right-column h1 {
   font-size: 3vw;
 }
+
+/* Padding for h1 in right column */
 .right-column h1 {
   padding: 0px 20px 0px 20px;
   color: var(--dark-black);
 }
 
+/* Padding for h3 in right column */
 .right-column h3 {
   padding: 20px 20px 0px 20px;
 }
 
+/* Styling for paragraph text in right column */
 .right-column p {
   padding: 20px 0px 20px 20px;
   display: inline;
   margin: 10px 0px 10px 0px;
 }
+
+/* Special styling for farmers tips in right column */
 .farmers-tips {
   padding: 40px 0px 40px 0px;
 }
 
+/* Styling for hidden content in right column */
 .hidden-content {
   padding: 0px 20px 20px 20px;
-  font-family: var(--main-text);
-  line-height: 2em;
+  font-family: var(--main-paragraph-text);
+  line-height: 3.5vw;
   display: none;
+  font-size: 0.6em;
 }
 
-.hidden-content a {
-  margin: 20px 0px 20px 0px;
+/* Font size for paragraph and span in right column */
+.right-column p,
+span {
+  font-size: 1.2vw;
 }
 
+/* Styling for the "Learn More" button */
 .learn-more-button {
   cursor: pointer;
   color: var(--dark-black);
   text-decoration: underline;
-  display: inline; /* Add this to display inline */
+  display: inline;
 }
+
+/* Styling for the expanded state of hidden content */
 .expanded {
   display: flex;
 }
 
+/* Image container styles for multiple images */
 .image-container {
   display: flex;
   justify-content: space-between;
@@ -1407,32 +1247,40 @@ p {
   width: 100%;
 }
 
+/* Styling for each image within image container */
 .image {
   width: 30%;
-  text-align: center; /* Center the image and figcaption */
+  text-align: center;
 }
 
+/* Image sizing and fit */
 .image img {
   width: 100%;
-  height: 200px; /* Set to whatever fixed height you want */
-  object-fit: cover; /* This will make sure the images are all uniform in size */
+  height: 200px;
+  object-fit: cover;
 }
 
+/* Spacing for figcaption under each image */
 .image figcaption {
-  margin-top: 10px; /* Add a bit of space between the image and the caption */
+  margin-top: 10px;
 }
 
-@media (max-width: 600px) {
+/* Media query for screens smaller than 800px */
+@media (max-width: 800px) {
+  /* Changes to news-container layout */
   .news-container {
     display: block;
     padding: 10px;
   }
 
+  /* Left column becomes full width */
   .left-column {
     flex: 100%;
     margin: 0px 0px 20px 0px;
     text-align: center;
   }
+
+  /* Right column becomes full width */
   .right-column {
     flex: 100%;
     margin-bottom: 20px;
@@ -1440,6 +1288,7 @@ p {
     text-align: center;
   }
 
+  /* Font size changes for h1 and p in right column */
   .right-column h1 {
     font-size: 8vw;
   }
@@ -1449,6 +1298,7 @@ p {
     font-size: 3vw;
   }
 
+  /* Other responsive changes for smaller screens */
   .left-column figure {
     position: block;
   }
@@ -1460,6 +1310,7 @@ p {
   .image {
     width: 100%;
   }
+
   figcaption {
     padding-bottom: 20px;
   }
@@ -1499,7 +1350,7 @@ p {
   margin: 0;
 }
 
-.content {
+.about-us-content {
   width: 46%;
   margin-left: 52%;
   margin-bottom: 5%;
@@ -1508,7 +1359,7 @@ p {
   /* Set text color to white */
 }
 
-.content p {
+.about-us-content p {
   margin: 0;
 }
 
@@ -1764,14 +1615,16 @@ p {
     top: 5%;
     width: 90%;
     height: auto; /* Let the height adjust automatically */
+    text-align: center;
   }
 
-  .content {
+  .about-us-content {
     width: 100%;
     margin-left: 0;
-    padding: 320px 20px 40px 20px;
+    padding: 330px 20px 40px 20px;
     text-align: center;
     background-color: var(--dark-black);
+    color: var(--almost-white);
   }
 
   .content p {
@@ -1794,6 +1647,7 @@ p {
     height: auto; /* Let the height adjust automatically */
     padding: 20px;
     margin: 10px 0;
+    text-align: center;
   }
 
   .about-us-container {
@@ -1845,6 +1699,10 @@ p {
 }
 
 @media only screen and (max-width: 600px) {
+  .about-us-content {
+    padding: 400px 20px 40px 20px;
+  }
+
   .meet-the-team {
     padding: 0px;
   }
@@ -1856,6 +1714,8 @@ p {
 
 /* Contact-Us */
 
+/* The .sub-newsletter class styles a newsletter subscription container.
+   The container is designed as a flexbox for better alignment and justification of child elements. */
 .sub-newsletter {
   display: flex;
   align-items: center;
@@ -1865,24 +1725,27 @@ p {
   margin: 80px 0px 60px 0px;
 }
 
+/* The .sub-container button class adds margin to buttons within a sub-container */
 .sub-container button {
   margin: 20px 0px 20px 0px;
 }
 
+/* The .subsection-img class is for adding padding above images in subsections */
 .subsection-img {
   padding-top: 20px;
 }
 
+/* The .timing-row class styles a row for displaying timing information.
+   The row is set as a flex container to center child elements both horizontally and vertically. */
 .timing-row {
   display: flex;
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   width: 100%;
-  /* Use full width */
 }
 
+/* The .timing-column-1 and .timing-column-2 classes are for styling individual columns
+   within the timing row. They each take up half the width of the row. */
 .timing-column-1,
 .timing-column-2 {
   flex: 1;
@@ -1890,13 +1753,18 @@ p {
   width: 50%;
 }
 
+/* Additional padding adjustments for .timing-column-1 */
 .timing-column-1 {
   padding: 40px 20px 0px 128px;
 }
 
+/* Additional padding adjustments for .timing-column-2 */
 .timing-column-2 {
   padding: 40px 128px 0px 20px;
 }
+
+/* The .contact-form class styles a contact form.
+   It sets the flex direction to column and aligns the items to the start. */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1906,35 +1774,40 @@ p {
   margin-bottom: 5%;
 }
 
+/* The .contact-form input class styles the input fields within the contact form.
+   It sets the width, padding, margin, border, border-radius and font family. */
 .contact-form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid var(--light-grey);
   border-radius: 5px;
-  font-family: var(--main-text);
+  font-family: var(--main-paragraph-text);
 }
 
-/* Add media queries for responsiveness */
+/* Media Queries for Responsiveness */
+
+/* The @media (max-width: 768px) section adjusts styles for screens narrower than 768 pixels */
 @media (max-width: 768px) {
+  /* Adjust the contact form width and padding for small screens */
   .contact-form {
     width: 100%;
     padding: 20px 20px 20px 20px;
   }
 
+  /* For smaller screens, timing-row changes its display property to block */
   .timing-row {
     display: block;
     justify-content: flex-start;
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
     width: 100%;
-    /* Use full width */
   }
 
+  /* Adjust padding and margins for timing columns on small screens */
   .timing-column-1 {
     padding: 40px 0px 10px 20px;
     margin-left: 10px;
+    width: 100%;
   }
 
   .timing-column-2 {
@@ -1942,88 +1815,99 @@ p {
     width: 100%;
     margin-left: 10px;
   }
+
+  /* Adjust height of timing columns for small screens */
   .timing-column-1,
   .timing-column-2 {
     flex: 1;
     height: 200px;
   }
 }
-
+/* The .farmers-hero-image class sets the width of the hero image to 100% */
 .farmers-hero-image {
   width: 100%;
 }
 
+/* The .tips-container class styles a container that holds tips.
+   It uses a flexbox to center-align the content and sets the border style, padding, and color. */
 .tips-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  overflow: hidden; /* Add this to hide overflow */
+  overflow: hidden; /* Hide any overflow content */
   color: var(--dark-black);
   padding: 20px;
   border-style: dotted solid dotted solid;
 }
 
+/* The .tips-container img class styles images within the tips container, setting their width and height. */
 .tips-container img {
   width: 50%;
   height: 50%;
   object-fit: cover;
-  /* padding: 0px 10px 0 10px; */
 }
 
+/* The .tip-text class adds padding to the tip text elements within the tips container. */
 .tip-text {
   padding: 0px 40px 0 40px;
 }
 
+/* The .tip-text button class adds top margin to buttons inside the .tip-text container */
 .tip-text button {
   margin: 20px 0px 0px 0px;
 }
 
+/* The .farmers-hero-section class styles a hero section, defining its position and padding. */
 .farmers-hero-section {
   position: relative;
   padding: 30px 0px 0px 0px;
   height: auto;
 }
 
+/* The .hero-img img class styles hero images, setting their position and z-index */
 .hero-img img {
   position: relative;
   z-index: 0;
 }
 
+/* The .farmerimg-text-overlay class styles a text overlay on farmer images,
+   setting its background color, position, padding, and font settings */
 .farmerimg-text-overlay {
   background-color: rgba(35, 37, 54, 0.7);
   width: 100%;
   padding: 30px 10px 30px 10px;
   position: absolute;
   top: 50%;
-  /* Align vertically in the center */
   left: 50%;
-  /* Align horizontally in the center */
   transform: translate(-50%, -50%);
-  /* Center the element precisely */
   z-index: 1;
   color: white;
   text-align: center;
-  font-family: var(--main-text);
+  font-family: var(--main-paragraph-text);
 }
 
+/* Styling paragraphs within the .farmerimg-text-overlay class */
 .farmerimg-text-overlay p {
   color: var(--almost-white);
   padding: 20px;
 }
 
-/* The above code is defining CSS styles for a button element that is a child of an element with the
-class "video-text-overlay". It sets the background color to a custom CSS variable called
-"--header-yellow" and the text color to a custom CSS variable called "--dark-black". */
+/* Styling button within the .farmerimg-text-overlay class */
 .farmerimg-text-overlay button {
   background-color: var(--header-yellow);
   color: var(--dark-black);
 }
 
+/* Adding hover effect to the button within the .farmerimg-text-overlay class */
 .farmerimg-text-overlay button:hover {
   background-color: var(--dark-black);
   color: var(--almost-white);
 }
+
+/* Media queries for responsiveness */
+
+/* Adjusting .farmerimg-text-overlay styles for screens narrower than 600px */
 @media (max-width: 600px) {
   .farmerimg-text-overlay {
     background-color: rgba(35, 37, 54);
@@ -2032,29 +1916,34 @@ class "video-text-overlay". It sets the background color to a custom CSS variabl
     top: 145px;
     padding: 30px 0px 30px 0px;
   }
+
+  /* Adjusting paragraph and h1 padding within .farmerimg-text-overlay */
   .farmerimg-text-overlay p,
   h1 {
     padding: 0px 30px 0px 0px;
   }
 }
+
+/* Adjusting .tips-container and children for screens narrower than 970px */
 @media only screen and (max-width: 970px) {
   .tips-container {
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
   }
 
   .tips-container img {
     order: 1;
-    width: 100%; /* Take full width */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
   }
 
   .tip-text {
     order: 2;
-    padding: 40px; /* Update padding as needed */
-    text-align: center; /* Optional, to center-align the text */
+    padding: 40px;
+    text-align: center;
   }
 }
 
+/* The .tractor-logo class sets the width of the tractor logo to 10% */
 .tractor-logo {
   width: 10%;
 }

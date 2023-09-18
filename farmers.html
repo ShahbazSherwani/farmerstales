@@ -14,14 +14,19 @@
   <meta name="keywords" content="news, farming, agriculture, harvesting, philippines" />
   <!-- Link to an external CSS file for styling -->
   <link rel="stylesheet" href="stylesheet/main.css" />
+
   <!-- Link to an external JS file for interactivity (defer for loading order) -->
+  <script src="scripts/scripts.js" defer></script>
+  <!-- Link to an external JS file for header/footer (defer for loading order) -->
+  <script src="scripts/header-footer.js" defer></script>
+
 
   <!-- Include a third-party library for font icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <!-- Include jQuery library from a CDN for dropdown menu and slick scroll on about us section -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Set the title displayed on the browser tab -->
-  <title>Farming Tales | Home</title>
+  <title>Farming Tales | Farmer's Wisdom</title>
 </head>
 
 <body>
@@ -37,8 +42,8 @@
             field. Who knows, your next business partner or lifelong friend
             may just be a click away. country
           </p>
-          <button type="submit">Latest News</button>
-          <button type="submit">Tips on Farming</button>
+          <a class="anchor-button" href="news.html">Latest News</a>
+          <a class="anchor-button" href="contactus.html">Contact Us</a>
         </form>
       </div>
     </div>
@@ -171,7 +176,6 @@
     </div>
   </section>
   <footer-component></footer-component>
-  <script src="scripts/header.js" defer></script>
 </body>
 
 </html>

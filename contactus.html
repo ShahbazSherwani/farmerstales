@@ -1,104 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Set character encoding to UTF-8 -->
-    <meta charset="UTF-8" />
-    <!-- Configure viewport for responsive design -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Describe the purpose of the web page for search engines -->
-    <meta
-      name="description"
-      content="Latest news about farming in Philippines."
-    />
-    <!-- Indicate the author of the web page -->
-    <meta name="author" content="Shahbaz" />
-    <!-- Provide relevant keywords for search engine optimization -->
-    <meta
-      name="keywords"
-      content="news, farming, agriculture, harvesting, philippines"
-    />
-    <!-- Link to an external CSS file for styling -->
-    <link rel="stylesheet" href="stylesheet/main.css" />
-    <!-- Link to an external JS file for interactivity (defer for loading order) -->
-    <script src="scripts/header.js" defer></script>
 
-    <!-- Include a third-party library for font icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <!-- Include jQuery library from a CDN for dropdown menu and slick scroll on about us section -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Set the title displayed on the browser tab -->
-    <title>Farming Tales | Home</title>
-  </head>
+<!-- Set character encoding to UTF-8 -->
+<meta charset="UTF-8" />
+<!-- Configure viewport for responsive design -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Describe the purpose of the web page for search engines -->
+<meta name="description" content="Latest news about farming in Philippines." />
+<!-- Indicate the author of the web page -->
+<meta name="author" content="Shahbaz" />
+<!-- Provide relevant keywords for search engine optimization -->
+<meta name="keywords" content="news, farming, agriculture, harvesting, philippines" />
+<!-- Link to an external CSS file for styling -->
+<link rel="stylesheet" href="stylesheet/main.css" />
 
-  <body>
-    <header-component></header-component>
-    <main class="contact-us">
-      <section class="sub-newsletter">
-        <div class="sub-container">
-          <h1>Subscribe to Our Newsletter: Stay Rooted, Stay Informed!</h1>
-          <p>
-            Don't miss out on the latest happenings in Philippine agriculture! Subscribe to our newsletter and get timely updates, exclusive articles, expert tips, and more—delivered right to your inbox.
-          </p>
-          <button>Subscribe now</button>
+<!-- Link to an external JS file for interactivity (defer for loading order) -->
+<script src="scripts/scripts.js" defer></script>
+<!-- Link to an external JS file for header/footer (defer for loading order) -->
+<script src="scripts/header-footer.js" defer></script>
+
+
+<!-- Include a third-party library for font icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<!-- Include jQuery library from a CDN for dropdown menu and slick scroll on about us section -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Set the title displayed on the browser tab -->
+<title>Farming Tales | Contact Us</title>
+
+<body>
+  <header-component></header-component>
+  <main class="contact-us">
+    <section class="sub-newsletter">
+      <div class="sub-container">
+        <h1>Subscribe to Our Newsletter: Stay Rooted, Stay Informed!</h1>
+        <p>
+          Don't miss out on the latest happenings in Philippine agriculture! Subscribe to our newsletter and get timely
+          updates, exclusive articles, expert tips, and more—delivered right to your inbox.
+        </p>
+        <button>Subscribe now</button>
+      </div>
+    </section>
+    <section class="subsection-img">
+      <img src="assets/images/farming.jpeg" alt="Hero Image" class="hero-image" />
+    </section>
+
+    <section class="timing">
+      <div class="timing-row">
+        <div class="timing-column-1">
+          <p>Working Hours</p>
+          <hr />
+          <h1>Monday to Friday</h1>
+          <h2>9:00 AM to 8:00 PM</h2>
+          <p>Our Support Team is Available 24/7</p>
         </div>
-      </section>
-      <section class="subsection-img">
-        <img
-          src="assets/images/farming.jpeg"
-          alt="Hero Image"
-          class="hero-image"
-        />
-      </section>
-
-      <section class="timing">
-        <div class="timing-row">
-          <div class="timing-column-1">
-            <p>Working Hours</p>
-            <hr />
-            <h1>Monday to Friday</h1>
-            <h2>9:00 AM to 8:00 PM</h2>
-            <p>Our Support Team is Available 24/7</p>
-          </div>
-          <div class="timing-column-2">
-            <p>Contact Us</p>
-            <hr />
-            <h1>02 07993 2905</h1>
-            <p>hello@farmerstales.com</p>
-          </div>
+        <div class="timing-column-2">
+          <p>Contact Us</p>
+          <hr />
+          <h1>02 07993 2905</h1>
+          <p>hello@farmerstales.com</p>
         </div>
-        <form action="submit" class="contact-form">
-          <input
-            type="text"
-            id="fname"
-            name="firstname"
-            placeholder="Your name.."
-          />
-          <input
-            type="text"
-            id="fname"
-            name="your-email"
-            placeholder="Your email.."
-          />
-          <input
-            type="text"
-            id="fname"
-            name="query"
-            placeholder="Query Related.."
-          />
-          <input
-            type="text"
-            id="fname"
-            name="message"
-            placeholder="Your message.."
-          />
-          <button>Submit</button>
-        </form>
-      </section>
-    </main>
+      </div>
+      <form action="submit" class="contact-form">
+        <input type="text" id="fname" name="firstname" placeholder="Your name.." />
+        <input type="text" id="fname" name="your-email" placeholder="Your email.." />
+        <input type="text" id="fname" name="query" placeholder="Query Related.." />
+        <input type="text" id="fname" name="message" placeholder="Your message.." />
+        <button>Submit</button>
+      </form>
+    </section>
+  </main>
 
-    <footer-component></footer-component>
-  </body>
+  <footer-component></footer-component>
+</body>
+
 </html>
